@@ -1,1 +1,0 @@
-PaymentInterface.o: PaymentInterface.cpp
