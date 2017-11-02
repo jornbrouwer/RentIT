@@ -1,18 +1,28 @@
-START HIER MET LEZEN
+# OSM - Modelling
+Jorn Brouwer & Wouter Meijer
+# Casus: Red-cars
+---
 
+# README
+
+
+**START HIER MET LEZEN**
+
+---
 
 Aan de docent:
 
 
+
 Zoals besproken hebben wij de documentatie, in markdown, beschreven.
 
-- Statische Gebruikersvriendelijk Beroepsproduct
-
-Wij gebruiken de tool 'mkdocs' om de:
+Wij gebruiken de [tool 'mkdocs'](http://www.mkdocs.org/#installation) om:
   - markdown files te converteren naar html.
-  - een statische webservertje te bouwen d.m.v. python
+  - een statische webserver te bouwen d.m.v. python.
 
 De reden dat wij dit besloten hebben is dat mijn partner en ik op verschillende Operating Systems werken. Hierdoor konden we niet met een geschikte grafische tekstverwerker (bv. OSx-Pages) samenwerken.
+
+
 
 Markdown wat ervaring mee, en kwam toen de tool mkdocs tegen. Het enige wat je nodig hebt is python:
 
