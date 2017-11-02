@@ -3,7 +3,7 @@ Jorn Brouwer & Wouter Meijer
 # Casus: Red-cars
 ---
 
-# README
+## README
 
 
 **START HIER MET LEZEN**
@@ -24,16 +24,39 @@ De reden dat wij dit besloten hebben is dat mijn partner en ik op verschillende 
 
 
 
-Markdown wat ervaring mee, en kwam toen de tool mkdocs tegen. Het enige wat je nodig hebt is python:
+Na het uitzoeken van e.e.a. over markdown kwamen we de tool mkdocs tegen. Je kunt hiermee via de command line, binnen 2 commando's een real-time webservertje draaien. In je tekstverwerker maak je bv. wijzigingen in je Markdown files (.md) >> save-file. Hierna ververst de browser automatisch en krijg je de wijzigingen te zien.
 
-installatie:
+Het enige wat je nodig hebt is python:
+
+
+### Clone this repo
+
+```
+git clone https://github.com/jornbrouwer/RentIT.git
+
+```
+
+### Install
 
 ![1. ](assets/markdown-img-paste-20171102212619818.png)
 
-now mkdocs is installed. We created a new mkdocs-filebase ```OOAD```. In the root of the OOAD folder there is an ```mkdocs.yml``` file. In there we added the pages of the static website.
+now mkdocs is installed. We created a new mkdocs-filebase.
 
-2. run the static server
+### Go to root of the 'clone'
 
-Run in the root of ```OOAD``` ```mkdocs serve```.
+```
+cd ../path_to_RentIT
+
+```
+
+The root of the folder contains ```mkdocs.yml``` file. This is the configuration file for the webserver.
+
+### Build the website
+
+```
+mkdocs serve
+```
+
+![](assets/markdown-img-paste-20171102231815929.png)
 
 open: [localhost:8000](127.0.0.1:8000)
