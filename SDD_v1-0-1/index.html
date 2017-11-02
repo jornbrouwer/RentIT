@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>SDD - Jorn & Wouter</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "SDD";
+    var mkdocs_page_input_path = "SDD_v1-0-1.md";
+    var mkdocs_page_url = "/SDD_v1-0-1/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Jorn & Wouter</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../SRS_v1-0-4/">SRS</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">SDD</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#software-design-description">Software Design Description</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#inhoudsopgave">Inhoudsopgave</a></li>
+        
+            <li><a class="toctree-l3" href="#introductie">Introductie</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Jorn & Wouter</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>SDD</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/jornbrouwer/RentIT/master/edit/master/docs/SDD_v1-0-1.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="software-design-description">Software Design Description</h1>
+<hr />
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<!-- TOC depthFrom:3 depthTo:4 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+<ul>
+<li><a href="#doel-van-dit-document">Doel van dit document</a><ul>
+<li><a href="#component-diagram">Component Diagram</a></li>
+<li><a href="#overzicht-van-alle-componenten">Overzicht van alle componenten</a></li>
+</ul>
+</li>
+<li><a href="#detailed-design-description">Detailed Design Description</a><ul>
+<li><a href="#uc-1-reserveringscomponent">UC 1 Reserveringscomponent</a></li>
+<li><a href="#uc-2-autocomponent">UC 2 Autocomponent</a></li>
+<li><a href="#uc-3-betalingscomponent">UC 3 Betalingscomponent</a></li>
+<li><a href="#uc-4-klantcomponent">UC 4 Klantcomponent</a></li>
+<li><a href="#uc-5-autobeheercomponent">UC 5 Autobeheercomponent</a></li>
+</ul>
+</li>
+<li><a href="#design-class-diagram">Design Class Diagram</a></li>
+</ul>
+<!-- /TOC -->
+
+<hr />
+<h2 id="introductie">Introductie</h2>
+<p>De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te verstrekken, kunt u <a href="../SRS_v1-0-4/#introductie-opdracht">naar de <code>Introductie Opdracht</code></a>  gaan.</p>
+<hr />
+<h3 id="doel-van-dit-document">Doel van dit document</h3>
+<ul>
+<li>Software Architectuur in grote lijnen beschrijven a.d.h.v. een componentdiagram.</li>
+<li>Systeem operaties over de individuele componenten beschrijven a.d.h.v. Component Sequence Diagrams.</li>
+<li>Een vertaling maken van concepten in het probleem(/opdracht)-domein naar code-concept a.d.h.v. een Design Class Diagram</li>
+<li>'Gedrag' van het systeem beschrijven a.d.h.v. andere interactie-diagrams zoals Activity diagrams en een statemachine.</li>
+<li>Gemaakte keuzes in het ontwerp beargumenteren en verantwoorden.</li>
+</ul>
+<hr />
+<h4 id="component-diagram">Component Diagram</h4>
+<p><strong>Iteratie 1</strong></p>
+<p><img alt="Component_Diagram_v1-0-1" src="../assets/Component_Diagram_v1-0-0.png" />
+<a href="../assets/Component_Diagram_v1-0-0.png">Path to image : Component_Diagram_v1-0-1</a></p>
+<p><strong>Iteratie 2</strong></p>
+<p><img alt="Component_Diagram_v1-0-2" src="../newDiagrams/png/CD_RendIt.png" /></p>
+<p><a href="../newDiagrams/png/CD_RendIt.png">Path to image : Component_Diagram_v1-0-2</a></p>
+<hr />
+<h4 id="overzicht-van-alle-componenten">Overzicht van alle componenten</h4>
+<pre><code>* Provided Interface
+* * required Interface
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>* Provided</th>
+<th>** Required</th>
+<th align="center">Component image with interfaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td>RitInfo</td>
+<td></td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102123326953.png" /></td>
+</tr>
+<tr>
+<td>autobeheer</td>
+<td>CheckInInfo</td>
+<td>ritInfo,  reserveringsinfo</td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102123407621.png" /></td>
+</tr>
+<tr>
+<td>reservering</td>
+<td>reserveringsinfo</td>
+<td>CheckInInfo, klantInfo</td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102120331445.png" /></td>
+</tr>
+<tr>
+<td>webapp</td>
+<td>webInfo</td>
+<td></td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102120317342.png" /></td>
+</tr>
+<tr>
+<td>klant</td>
+<td>klantInfo</td>
+<td>webInfo, betalingsInfo</td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102120201322.png" /></td>
+</tr>
+<tr>
+<td>betalingsdienst</td>
+<td>betalingsInfo</td>
+<td></td>
+<td align="center"><img alt="" src="../assets/markdown-img-paste-20171102120209987.png" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h3 id="detailed-design-description">Detailed Design Description</h3>
+<p>Hieronder worden de verschillende onderdelen verder uitgelegd.</p>
+<p>Om de beschrijvingen structuur te geven hanteren  bespreken we de onderdelen in hoofdlijn over de Use Cases. Hierbij geldt dat het soms relevant kan zijn om uit te wijden over ook andere onderdelen. Hierdoor kan overlap ontstaan.</p>
+<pre><code>Detailed Design Descriptions Format
+
+* korte beschrijving van de koppeling tussen:
+  - De Use Case.
+  - Het ontworpen component.
+* Een component Sequence Diagram
+* Eventueel een Activity Diagram
+* Ontwerpbeslissingen met eventuele Design Patterns.
+
+</code></pre>
+
+<p><strong>Overzicht keuze type diagram</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">UseCase-Code</th>
+<th align="center">SSD</th>
+<th align="center">CSD</th>
+<th align="center">AD</th>
+<th align="center">SM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">UC-1</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">UC-2</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">UC-3</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">UC-4  (*CRUD)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">UC-5   (*CRUD)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>*CRUD = Create Read Update Delete</p>
+<hr />
+<hr />
+<h4 id="uc-1-reserveringscomponent">UC 1 Reserveringscomponent</h4>
+<h5 id="short-description">Short description</h5>
+<p>Het reserveren van een auto bestaat uit grofweg 3 hoofd-onderdelen:</p>
+<ol>
+<li>Inloggen en verificatie van de klant.</li>
+<li>Criteria aangeven voor het huren van een huurauto</li>
+<li>Bevestigen van de reservering, praktische informatie verschaffen.</li>
+</ol>
+<h5 id="component-sequence-diagram-iteratie-1">Component Sequence Diagram <strong>Iteratie 1</strong></h5>
+<p><img alt="CSD_UC1_reserverenAuto_it1" src="../assets/markdown-img-paste-20171031040223576.png" /></p>
+<p><a href="../assets/markdown-img-paste-20171031040223576.png">Path to image : CSD_UC1_reserverenAuto_iteratie1</a></p>
+<h5 id="component-sequence-diagram-iteratie-2">Component Sequence Diagram <strong>Iteratie 2</strong></h5>
+<p><img alt="CSD_UC1_rserveerauto_it2" src="../newDiagrams/png/CSD_UC1_ReserveerAuto.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC1_ReserveerAuto.png">Path to image : CSD_UC1_rserveerauto_iteratie2</a></p>
+<h5 id="design-decisions">Design decisions</h5>
+<p><strong>Inloggen en verificatie van de klant.</strong>
+<img alt="" src="../assets/markdown-img-paste-20171102150115875.png" /></p>
+<p><strong>Criteria aangeven voor het huren van een huurauto</strong>
+<img alt="" src="../assets/markdown-img-paste-20171102150331941.png" /></p>
+<p><strong>Bevestigen en praktische informatie</strong>
+<img alt="" src="../assets/markdown-img-paste-20171102150415250.png" /></p>
+<hr />
+<h4 id="uc-2-autocomponent">UC 2 Autocomponent</h4>
+<h5 id="short-description_1">Short description</h5>
+<p>Het gebruiken van een auto bestaat 3 hoofd-onderdelen:</p>
+<ol>
+<li>
+<p>Openen van een auto a.d.h.v. verificatie op de reservering</p>
+</li>
+<li>
+<p>Het maken van 1 of meer ritten tijdens de huurperiode</p>
+</li>
+<li>
+<p>Het doorvoeren van de gemaakte ritten na de huurperiode.</p>
+</li>
+</ol>
+<p>Om de flow van  activiteiten extra te verduidelijken hebben we voor deze Use Case ook een activity diagram gemaakt.</p>
+<h5 id="activity-diagram">Activity Diagram</h5>
+<p><img alt="AD_Gebruik_Auto_iteratie_2" src="../newDiagrams/png/AD_UC2_GebruikAuto.png" />
+<a href="../newDiagrams/png/AD_UC2_GebruikAuto.png">Path to image : AD_Gebruik_Auto_iteratie_2</a></p>
+<h5 id="component-sequence-diagram-iteratie-1_1">Component Sequence Diagram <strong>Iteratie 1</strong></h5>
+<p><img alt="CSD_UC2-gebruikAuto v1-0-1" src="../assets/CSD_UC2-gebruikAuto_v1-0-0.png" /></p>
+<p><a href="../assets/CSD_UC2-gebruikAuto_v1-0-0.png">Path to image : CSD_UC2-gebruikAuto_iteratie_1</a></p>
+<h5 id="component-sequence-diagram-iteratie-2_1">Component Sequence Diagram <strong>Iteratie 2</strong></h5>
+<p><img alt="CSD_UC2-gebruikAuto v1-0-2" src="../newDiagrams/png/CSD_UC2_GebruikAuto.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC2_GebruikAuto.png">Path to image : CSD_UC2-gebruikAuto_iteratie_2</a></p>
+<h5 id="state-machine-diagram">State Machine Diagram</h5>
+<p><img alt="SM_UC2" src="../newDiagrams/png/SM_UC2_GebruikAuto.png" /></p>
+<h5 id="design-decisions_1">Design decisions</h5>
+<p><strong>Openen van een auto a.d.h.v. verificatie op de reservering</strong></p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102150700629.png" /></p>
+<p><strong>Het maken van 1 of meer ritten tijdens de huurperiode</strong></p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102150714211.png" /></p>
+<p><strong>Het doorvoeren van de gemaakte ritten na de huurperiode.</strong></p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102150817789.png" /></p>
+<p><strong>Toevoegen van een boete</strong></p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102153912833.png" /></p>
+<hr />
+<hr />
+<h4 id="uc-3-betalingscomponent">UC 3 Betalingscomponent</h4>
+<h5 id="short-description_2">Short description</h5>
+<p>Het betalen van een gehuurde auto gebeurt, zoals vaker benoemd, via een automatische afschrijving.</p>
+<p>We hebben tijdens de eerste iteratie een gesteld dat het betalingssyteem actief 'vraagt' aan RedCars welke betalingen vericht moeten worden.
+Tijdens de tweede iteratie hebben we de actor betalingssyteem veranderd naar van primair naar secundair. Daarbij hebben we tijd als primaire actor toegevoegd (zie <a href="../SRS_v1-0-4/#3_3-uc3-betalen">toelichting SRS</a>)</p>
+<h5 id="component-sequence-diagram">Component Sequence Diagram</h5>
+<p><img alt="CSD_UC3_Betalen v1-0-2" src="../newDiagrams/png/CSD_UC3_Betalen.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC3_Betalen.png">Path to image : CSD_UC3_Betalen_iteratie_2</a></p>
+<h5 id="design-decisions_2">Design decisions</h5>
+<p><strong> Van tijd naar betalingsdienst</strong></p>
+<p>De abstracte actor Tijd triggert de betalingsdienst. De betalingsdienst vraagt aan het Reserveringsinfo component om de volledige betaling te berekenen.</p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102151534481.png" /></p>
+<p><strong>Facade Controller</strong></p>
+<p>Wij hebben voor de functionaliteit van het betalingscomponent een probleem opgelost door middel van een Design Pattern. Wij liepen er tegen aan dat het betalingscomponent, na het gebruik van de auto, het totaalbedrag moet weten. Om ervoor te zorgen dat we geen <code>Hogere Coupling</code> en <code>Lagere Cohesie</code> zouden krijgen door het betalingscomponent direct verbinding te laten leggen met de benodigde onderdelen om het totaal bedrag uit te rekenen.</p>
+<p>Hierdoor hebben we een 'pure artificial' component bedacht, reserveringsinfo. Dit component is de brug tussen het betalingssysteem en de andere componenten (zie onderstaande afbeelding).</p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102151547239.png" /></p>
+<hr />
+<h4 id="uc-4-klantcomponent">UC 4 Klantcomponent</h4>
+<h5 id="short-description_3">Short description</h5>
+<p>Het klant component wordt gebruikt om klanten mee te beheren.</p>
+<h5 id="component-sequence-diagram-create">Component Sequence Diagram Create</h5>
+<p><img alt="CSD_UC4_BeheerKlant_Create" src="../newDiagrams/png/CSD_UC4_BeheerKlant_Create.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC4_BeheerKlant_Create.png">Path to image : CSD_UC4_BeheerKlant_Create</a></p>
+<h5 id="design-decisions_3">Design decisions</h5>
+<p>happy flow</p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102154101675.png" /></p>
+<p>Toevoegen nieuwe klant aan systeem en controle op uniek account.</p>
+<p><img alt="" src="../assets/markdown-img-paste-20171102154125937.png" /></p>
+<hr />
+<h5 id="component-sequence-diagram-read">Component Sequence Diagram Read</h5>
+<p><img alt="CSD_UC4_BeheerKlant_Create" src="../newDiagrams/png/CSD_UC4_BeheerKlant_Read.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC4_BeheerKlant_Read.png">Path to image : CSD_UC4_BeheerKlant_Read</a></p>
+<hr />
+<h5 id="component-sequence-diagram-update">Component Sequence Diagram Update</h5>
+<p><img alt="CSD_UC4_BeheerKlant_Create" src="../newDiagrams/png/CSD_UC4_BeheerKlant_Update.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC4_BeheerKlant_Update.png">Path to image : CSD_UC4_BeheerKlant_Update</a></p>
+<hr />
+<h5 id="component-sequence-diagram-delete">Component Sequence Diagram Delete</h5>
+<p><img alt="CSD_UC4_BeheerKlant_Create" src="../newDiagrams/png/CSD_UC4_BeheerKlant_Delete.png" /></p>
+<p><a href="../newDiagrams/png/CSD_UC4_BeheerKlant_Delete.png">Path to image : CSD_UC4_BeheerKlant_Delete</a></p>
+<hr />
+<hr />
+<h4 id="uc-5-autobeheercomponent">UC 5 Autobeheercomponent</h4>
+<h5 id="short-description_4">Short description</h5>
+<p>Onderstaande activity diagrams beschrijven de flow van het beheren van een auto.</p>
+<h5 id="activity-diagram-create">Activity Diagram Create</h5>
+<p><img alt="AD_UC5_BeheerAuto_Create" src="../newDiagrams/png/AD_UC5_BeheerAuto_Create.png" /></p>
+<p><a href="../newDiagrams/png/AD_UC5_BeheerAuto_Create.png">AD_UC5_BeheerAuto_Create</a></p>
+<h5 id="activity-diagram-read">Activity Diagram Read</h5>
+<p><img alt="AD_UC5_BeheerAuto_Read" src="../newDiagrams/png/AD_UC5_BeheerAuto_Read.png" /></p>
+<p><a href="../newDiagrams/png/AD_UC5_BeheerAuto_Read.png">AD_UC5_BeheerAuto_Read</a></p>
+<h5 id="activity-diagram-update">Activity Diagram Update</h5>
+<p><img alt="AD_UC5_BeheerAuto_Update" src="../newDiagrams/png/AD_UC5_BeheerAuto_Update.png" /></p>
+<p><a href="../newDiagrams/png/AD_UC5_BeheerAuto_Update.png">AD_UC5_BeheerAuto_update</a></p>
+<h5 id="activity-diagram-delete">Activity Diagram Delete</h5>
+<p><img alt="AD_UC5_BeheerAuto_Delete" src="../newDiagrams/png/AD_UC5_BeheerAuto_Delete.png" /></p>
+<p><a href="../newDiagrams/png/AD_UC5_BeheerAuto_Delete.png">AD_UC5_BeheerAuto_Delete</a></p>
+<h3 id="design-class-diagram">Design Class Diagram</h3>
+<p><img alt="Design Class Diagram v1-0-0" src="../newDiagrams/png/DCD_RendIt.png" /></p>
+<p><a href="../newDiagrams/png/DCD_RendIt.png">Path to image : Design Class Diagram_iteratie_2</a></p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../SRS_v1-0-4/" class="btn btn-neutral" title="SRS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/jornbrouwer/RentIT/master/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../SRS_v1-0-4/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

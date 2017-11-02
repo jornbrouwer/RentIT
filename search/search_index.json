@@ -1,0 +1,594 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Casus: Red-cars\n\n\nOSM - Modelling\n\n\nJorn Brouwer \n Wouter Meijer\n\n\n\n\nAan..\n\n\nWij hebben ervoor gekozen om de do\n\n\nToelichting op gemaakte keuzes:\n\n\nToelichting op de manier hoe wij de op-te-leveren producten, hebben gerealiseerd:\n\n\n\n\n\n\nHet SRS en SDD bevatten zowel elementen uit iteratie 1 als uit iteratie 2. Dit is een bewuste keuze omdat de gevraagde documenten per iteratie, beschreven in de aangereikte casus, ook niet zo te verdelen zijn.\n\n\n\n\n\n\nWe zijn op een aantal punten niet slaafs ingegaan op de gevraagde omschreven opdracht. Maar hebben de afgeweken punten beschreven in: \nLINK\n\n\n\n\n\n\nIn de toelichting van het:\n\n\n\n\n\n\nSoftware Requirements Specification\n\n\n\n\n\n\nSoftware Design Document", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#casus-red-cars", 
+            "text": "", 
+            "title": "Casus: Red-cars"
+        }, 
+        {
+            "location": "/#osm-modelling", 
+            "text": "Jorn Brouwer   Wouter Meijer", 
+            "title": "OSM - Modelling"
+        }, 
+        {
+            "location": "/#aan", 
+            "text": "Wij hebben ervoor gekozen om de do", 
+            "title": "Aan.."
+        }, 
+        {
+            "location": "/#toelichting-op-gemaakte-keuzes", 
+            "text": "Toelichting op de manier hoe wij de op-te-leveren producten, hebben gerealiseerd:    Het SRS en SDD bevatten zowel elementen uit iteratie 1 als uit iteratie 2. Dit is een bewuste keuze omdat de gevraagde documenten per iteratie, beschreven in de aangereikte casus, ook niet zo te verdelen zijn.    We zijn op een aantal punten niet slaafs ingegaan op de gevraagde omschreven opdracht. Maar hebben de afgeweken punten beschreven in:  LINK    In de toelichting van het:    Software Requirements Specification    Software Design Document", 
+            "title": "Toelichting op gemaakte keuzes:"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/", 
+            "text": "Software Requirements Specification\n\n\n\n\n\n\n\n\n\nInhoudsopgave\n\n\n\n\n\n\n\n1. Introductie opdracht\n\n\nDe doelstelling van RedCars\n\n-\n2. UseCase Model\n\n\n\n\n\n\n2.1 UseCase Diagram\n\n\n2.1.1 Extend relatie\n\n\n2.1.2 Include relatie\n\n\n2.2 Actor-goal list\n\n\n\n\n\n\n3 Overzicht Use Case's\n\n\n3.1 UC1: reserveer auto\n\n\n3.2 UC2: gebruik auto\n\n\n3.3 UC3: betalen\n\n\n3.4 UC4: beheer klant\n\n\n3.4.1 UC4.1-Create\n\n\n3.4.2 UC4.2-Read\n\n\n3.4.3 UC4.3-Update\n\n\n3.4.4 UC4.4-Delete\n\n\n\n\n\n\n3.5 UC5: beheer auto\n\n\n\n\n\n\n4 Domain model\n\n\n5 Supplementary_Specification\n\n\n5.1 Functional\n\n\n5.2 Usability\n\n\n5.3 Reliability\n\n\n5.4 Performance\n\n\n5.5 Supportability\n\n\n\n\n\n\n\n\n\n\n1 Introductie opdracht\n\n\nWij voeren de casus uit voor autoverhuurbedrijf RentIt. Zij willen een nieuwe service gaan aanbieden, namelijk het verhuren van deelauto's.  \n\n\nHet doel van dit document is om op gestructureerde wijze een analyse te verkrijgen van het gevraagde systeem.\nWaarna in het \nSoftware Design Description\n een ontwerp beschreven staat voor dit systeem. In dit document beschrijven wij de meest actuele versie van deze analyse.\n\n\n1_1 De doelstelling van RedCars\n\n\nWij willen een autoverhuur service aanbieden, waarbij de vraag naar auto's bepaald waar de auto's gestationeerd worden. Nu gebeurt dit met name gecentraliseerd, vanuit een specifieke locatie.\n\n\nVoor dit probleem is ons gevraagd een analyse en ontwerp te realiseren.\n\n\n\n\n\n\n2 Use Case Model\n\n\n\n\n2_1 UseCase Diagram\n\n\n\n\n\n\n2_1_1 Extend relatie\n\n\n\n\nUC1-reserveerAuto \nextends\n UC2-gebruikAuto\n\n\n\n\n\n\nDe extend relatie tussen UC1 en UC2 hebben wij geplaatst omdat zonder deze extend, UC2-gebruikAuto ook uitgevoerd kan worden (volgens het Use Case Diagram) zonder dat er eerst een reservering is gedaan door een klant.\n\n\n\n\n\n\nDaarnaast kan je een auto reserveren maar is dat niet in 100% van de gevallen garantie voor het gebruiken van de auto.\n\n\n\n\n\n\n\n\n2_1_2 Include relatie\n\n\n\n\nUC2-gebruikAuto \ninclude\n UC3-betalen\n\n\n\n\nHet gebruiken van een auto leidt altijd tot een betaling, waarna vervolgens opnieuw een auto gereserveerd mag worden. Mocht de automatische afschrijving niet slagen dan kan er geen nieuwe reservering geplaatst worden. Door deze sterke relatie en ook afhankelijkheid hebben we de include relatie toegepast.\n\n\n\n\nOpmerking: wij hebben ook overwogen om nog een include relatie, toe te voegen tussen UC1-reserveerAuto en UC3-betalen. Omdat na een reservering altijd een betaling volgt ookal wordt UC2-gebruikAuto niet uitgevoerd.\n\n\n\n\n\n\n\n\n2_2 Actor-goal list\n\n\n\n\n\n\n\n\nAA.\n\n\nActor\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\n1\n\n\nKlant\n\n\nWil een dienst afnemen bij RedCars autoverhuur. Hierbij wil de klant een keuze aanbod hebben om binnen een gekozen tijdsbestek een auto naar keuze te kunnen huren.\n\n\n\n\n\n\n2\n\n\nMedewerker\n\n\nWil zijn taken als medewerker correct, snel en met gemak kunnen uitvoeren.\n\n\n\n\n\n\n3\n\n\nTijd\n\n\nTijd is volgens onze analyse de primaire actor voor de UC3-betalen. Er wordt namelijk een automatisch afschrijving uitgevoerd. Weliswaar door een externe dienst, \ntoch is tijd 'degene' die de trigger zal moeten geven om de betaling af te schrijven\n. De kosten voor het huren van een wagen, kunnen pas nadat een klant heeft uitgecheckt, bepaald worden (\nhuurbedrag + kilometerkosten + evt. boete\n)\n\n\n\n\n\n\n4\n\n\nBetalingsdienst\n\n\nHet betalingsdienst is volgens onze analyse een secundaire actor. Uiteraard zal deze externe partij betalingen voor hun klanten (in ons geval RedCars) correct willen regelen. Voor onze situatie levert het betalingsdienst een dienst aan ons systeem.\n\n\n\n\n\n\n5\n\n\nRedCars Management\n\n\nDeze actor komt niet expliciet voor in ons usecase diagram. Om diverse redenen zou je deze actor, zeker voor een 'echte' opdrachtgever, kunnen opnemen in use cases. M.b.t. dit beroepsproduct hebben wij ervoor gekozen om deze actor niet actief te beschrijven.\n\n\n\n\n\n\n\n\nOpmerking: De beschrijving bevat wishful thinking. De kerntaken hebben in overleg met onze docent besproken. De rest hebben we aangevuld met, volgens ons, algemeen aanvaardbare omschrijvingen.\n\n\n\n\n\n\n3 Use Case Descriptions\n\n\nHieronder worden de alle noodzakelijke use cases beschreven.\n\n\nBij elke uitwerking van een use case hebben wij een vast formaat gehanteerd waardoor wij denken dat we bijdragen aan positieve traceability tussen de onderdelen in de analyse en het design.\n\n\nUse Case Descriptions Format\n\n* De brief-description.\n* Een afbeelding van het bijbehorende System Sequence Diagram.\n* De Fully-Dressed Use Case description.\n* Een link naar de glossary, met daarin beschreven systeemoperaties.\n* Een link naar de bijbehorende Component Sequence Diagram in het SDD.\n\n\n\n\n\n\n3_0 Overzicht Use Case's\n\n\nWij hebben ervoor gekozen om de volgende 5 hoofd-functionaliteiten te vertalen naar Use Cases.\n\n\nOpmerking; wij hebben in overleg met de docent alle __brief-descriptions__ alszijnde een specifiek scenario, met een happy ending geschreven.\n\n\n```Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. WIj hebben ervoor gekozen 2 CRUD UseCases op een andere manier uit te voeren namelijk: UC4-beheerKlant en UC5-beheerAuto.\n\n\nUC4-beheerKlant\n\n\n\n\n4x System Sequence Diagrams\n\n\n4x Component Sequence Diagram\n\n\n\n\nUC5-beheerAuto\n\n\n\n\n4x Activity diagram\n\n\n\n\n\n\n\n\n\n[ \nUC1-reserveerAuto\n ] [ \nuc2-gebruik-auto\n ] [ \nUC3-betalen\n ] [ \nUC4-beheerKlant\n ]  [ \nUC5: beheer auto\n ]\n\n\n\n\n3_1 UC1: reserveer auto\n\n\nBrief-description\n\n\nDe klant wil een stationwagen huren voor een periode van een week.\nDe klant logt in op het systeem. Het systeem toont alle beschikbare autos.\nDe klant zoekt een beschikbare stationwagen bij de klant in de buurt, voor de volgende week.\nSysteem toont beschikbare stationwagens, bij hem in de buurt, voor die periode.\nDe klant maakt hieruit een keuze\nHet systeem stuurt een bevestiging.\n\n\nSystem Sequence Diagram\n\n\n\n\nPath to image : SSD_UC1_reserveerAuto_v1-0-0\n\n\nFully-dressed Description\n\n\n** Info:**\n\n- Primary actor: Klant\n- Stakeholders and interests:\n- Precondities:\n    - De klant heeft een account bij RentIt\n    - De klant heeft een pas thuisgestuurd gekregen.\n    - De klant heeft geen betalingsachterstand bij RentIt\n- Postcondities:\n    - De klant heeft een bevestiging ontvangen met daarin:\n    - de huurperiode( van-datum -- tot-datum).\n    - De kale prijs van de huurperiode (exlusief gereden kilometers en evt. boete).\n    - Informatie over de gehuurde auto (bv het kenteken).\n    - De standplaats waar de klant de auto op kan halen.\n\n\n\n\n** Basic flow: **\n\n1. De klant logt in op de website met zijn emailadres en pasnummer.\n2. Het systeem kijkt of de klant een betalingsachterstand heeft.\n3. [__Nee__] De website geeft alle auto's en hun beschikbaarheid en standplaats weer.\n4. De klant geeft aan in welke stad hij de auto wil ophalen.\n5. [__1 of meer autos beschikbaar__] De website geeft alle beschikbare auto's in deze stad weer.\n6. De klant kiest een periode waarin hij/zij de auto wil gebruiken.\n7. [__1 of meer auto's beschikbaar__] Het systeem toont alle autos in die periode.\n8. De klant kiest het gewenste type auto.\n9. [__1 of meer auto's beschikbaar__] Het systeem toont alle auto's van het gekozen type.  \n10. De klant kiest een auto.\n11. Het systeem toont voor de gekozen instellingen de prijs zonder- en met abbonoment.  \n12. De klant kiest een van de twee opties.\n13. De website geeft een bevestiging van de reservering.\n\n\n\n\n**Alternative flow:**\n\n- 3.a. [Ja] Het systeem toont een melding dat de betaling eerst voldaan moet zijn voordat de klant een nieuwe reservering mag plaatsen.\n- 5.a. [Er zijn geen autos beschikbaar in deze stad] Systeem toont melding en evt. optie om auto in andere stad te huren.\n- 7.a. [Er zijn geen autos beschikbaar in de gekozen periode] Systeem toont melding en evt. optie voor andere periode.\n- 9.a. [Er zijn geen autos van dit type beschikbaar] Systeem toont melding en evt. om auto van ander type te huren.\n\n\n\n\n3_2 UC2: gebruik auto\n\n\nBrief-description\n\n\nDe klant wil zijn gehuurde auto gebruiken.\nDe klant checkt in.\nDe klant opent de auto met zijn pasje en start de auto.\nHet systeem registreert de starttijd van de rit.\nDe klant rijdt naar een bestemming.\nHet systeem registreert de eindtijd van de rit.\nDe klant zet de auto uit.\nHet systeem checkt of de huidige locatie de standplaats is,\nin dat geval wordt dit geregistreerd en geeft de mogelijkheid aan de klant om uit te checken.\nDe klant checkt uit.\nDe klant is wedergekeerd op de standplaats en doet de auto op slot met zijn pasje.\n\n\nSystem Sequence Diagram\n\n\n\n\nPath to image : SSD_UC2-gebruikAuto\n\n\nFully-dressed Description\n\n\n**Info: **\n\n* Primary actor:De klant\n* Stakeholders and interests:\n* Precondities:De klant heeft een auto gereserveerd. De klant is bij de auto.\n* Postcondities:De klant is wedergekeerd op de standplaats van de auto.\n\n\n\n\n**Basic flow:**\n\n1. De klant checkt in.\n2. Het systeem registreert wie welke auto gaat gebruiken.\n3. De klant opent de auto.\n4. De klant stapt in.\n5. De klant start de auto.\n6. Het systeem registreert de begintijd van de rit.\n7. De klant rijdt naar zijn bestemming.\n8. De klant stopt de auto.\n9. Het systeem registreert de eindtijd en het aantal gereden kilometers van de rit.\n10. Het systeem controleert of de huidige locatie zijn standplaats is.\n11. [Ja] Het systeem controleert of de reservering van deze klant is afgelopen.\n12. [Ja] Het systeem geeft de mogelijkheid uit te checken.\n13. De klant checkt uit.\n14. Het systeem controleert of de klant te laat is\n15. [Nee] Het systeem stuurt alle informatie op voor verwerking\n\n\n\n\n**Alternative flow:**\n\n* 11.a. [Nee] stappen 5 tot en met 11 worden uitgevoerd.\n* 12.a. [Nee] Het systeem geeft een melding dat de reservering nog niet is afgelopen\nGa verder bij stap 4\n* 14.a. [Ja] Het systeem registreert het aantal uren dat de auto te lang gebruikt is.\n* 14.b. Het systeem stuurt alle informatie op voor verwerking inclusief de melding dat de auto te lang gebruikt is.\n\n\n\n\n\n\n[ ] Link to Component Sequence Diagram\n\n\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n3_3 UC3: betalen\n\n\nDe Use Case betalen is een zogenaamde 'core functionality'. Het hele business model van RedCars is zonder een betaling onmogelijk om op de huidige manier te realiseren. Vandaar dat gevraagd is deze Use Case prioriteit te geven in de eerste Iteratie, en in de tweede iteratie te verbeteren. Om dit proces te illustreren hebben we bij deze Use Case beide iteraties geillustreerd. De eerste uit iteratie 1 en de tweede uit iteratie 2.\n\n\nBrief-description Iteratie 1\n\n\nHet betalingsinterface wil de rekening van de klant, die een abonnement gratis, station, per week abonnement en geen schulden heeft, afschrijven.\nHet betalingsinterface vraagt aan het systeem of de klant buiten zijn gereserveerde periode is gegaan.\nHet systeem geeft aan dat dit niet het geval is.\nHet betalingsinterface vraagt aan het systeem welk abonnement de klant heeft.\nHet systeem geeft aan dat de klant een gratis, stationwagen, per week abonnement heeft.\nHet betalingsinterface berekent de huidige prijs voor de klant.\nHet betalingsinterface vraagt hoeveel km de klant gereden heeft.\nHet systeem geeft aan dat de klant 300 km heeft gereden.\nHet betalingsinterface berekent opnieuw de huidige prijs.\nHet betalingsinterface schrijft de rekening van de klant zijn rekening af.\n\n\nSystem Sequence Diagram Iteratie 1\n\n\n\n\nPath to image : SSD_UC3-betalen\n\n\nBrief-description Iteratie 2\n\n\nOp het moment dat er een reservering wordt geplaatst, staat er een eindtijd in het systeem. RedCars levert een dienst met een 'contract', dat gaat buiten de scope van dit project. In dit contract staat (hoogstwaarschijnlijk) een termijn van bv. 5 werkdagen. Op de eindtijd van een specifieke reservering start dan deze termijn. Na verloop van tijd wordt dus de reservering getriggerd om tot betaling over te gaan.\n\n\nSystem Sequence Diagram Iteratie 2\n\n\n\n\nPath to image : SSD_UC3-betalen\n\n\nFully-dressed Description\n\n\n**Info:**\n\n* Primary actor:\n    - Tijd\n\n* Stakeholders and interests:\n    - Klant; de klant wil op tijd betalen voor zijn huur\n    - Betalingssysteem: wil de afgesproken dienst met RedCars na komen.\n\n* Pre-condities:\n    - De reservering en de afgesproken termijn zijn afgelopen.\n    - De klant heeft automatisch afschrijven ingesteld.\n\n* Post-condities:\n    - De huur is van de klant zijn rekening afgeschreven.\n\n\n\n\n**Basic flow:**\n\n1. Het betalingsinterface vraagt aan het systeem of de klant buiten zijn gereserveerde periode is gegaan.\n2. [Nee] Het betalingsinterface vraagt aan het systeem welk abonnement de klant heeft.\n3. Het systeem geeft door welk abonnement de klant heeft.\n4. Het betalingsinterface vraagt hoeveel kilometers de klant gereden heeft.\n5. Het systeem geeft het aantal gereden kilometers door.\n6. Het betalingsinterface berekent de prijs.\n7. Het betalingsinterface schrijft de rekening van de klant zijn rekening af.\n\n\n\n\n**Alternative flow:**\n\n* 2.a. [Ja] Het betalingsinterface vraagt aan het systeem hoeveel uur er meer gereden is.\n* 2.b. Het betalingsinterface rekent het huurbedrag als boete.\nuse case gaat verder bij stap 2.\n\n\n\n\nSysteemoperaties\n\n\n[ ] link to Component sequence diagram\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n3_4 UC4: beheer klant\n\n\nCRUD Use Case. Create Read Update Delete\n\n\nDeze use case is er een van administratieve taak. Het beheren van klanten is echter meer dan alleen statische klantinformatie bijhouden. Zo moeten er meerdere automatische checks worden uitgevoerd die betrekking hebben op een klant of klant-gerelateerde informatie (bv. klant mag niet reserveren met betalingsachterstand).\n\n\nUC:4_1-Create\n\n\nBrief-description\n\n\nHet aanmaken van een klant gebeurd op de website van RedCars. De website zelf buiten de scope van deze opdracht. Wel is gevraagd om de situatie te 'mocken'. Voor de registratie van een nieuwe klant hebben wij in ieder geval de NAW-gegevens nodig. Daarnaast een email-adres (tevens de gebruikersnaam op de website) en een rekeningnummer om de kosten automatisch vanaf te schrijven.\n\n\nSystem Sequence Diagram Iteratie 1\n\n\nPath to image : SSD_UC4-Create\n\n\n\n\nSystem Sequence Diagram Iteratie 2\n\n\n\n\nFully-dressed Description\n\n\n**Info:**\n\n* Primary actor: Klant\n* Stakeholders and interests:\n* Precondities: De klant heeft de website van RendIt openstaan.\n* Postcondities:De klant heeft een account op de website.\n\n\n\n\n**Basic flow:**\n\n1. De klant geeft aan dat hij zich wil registreren.\n2. Het systeem vraagt om zijn naam, adres, woonplaats, emailadres en bankrekeningnummer door te geven.\n3. De klant geeft zijn naam, adres woonplaats, emailadres en bankrekeningnummer op.\n4. Het systeem vraagt of de klant goedkeuring geeft om rekeningen automatisch af te laten schrijven.\n5. [Ja] De klant geeft deze goedkeuring.\n6. Het systeem laat ingegoerde gegevens zien, en vraagt aan de klant of deze correct zijn.\n7. [Ja] De klant geeft aan dat de ingevoerde gegevens correct zijn.\n8. Het systeem controleert of het aan te maken account nog niet bestaat.\n8. [Ja] Het systeem geeft een bevestiging dat het account is aangemaakt\n9. Het systeem geeft aan dat de pas onderweg wordt opgestuurd.\n\n\n\n\n**Alternative flow:**\n\n* 4.a. [Nee] Systeem geeft aan dat het niet mogelijk is een account aan te maken zonder automatische goedkeuring.\n* 7.a. [Nee] Systeem vraagt aan de klant om de onjuiste gegevens aan te passen.\nUse Case gaat verder bij stap 2.\n* 9.a. [Nee] Het systeem geeft aan dat er al een account bestaat, met de huidige gegevens.\n* 9.b Het systeem geeft aan dat de klant contact moet opnemen met de klantenservice.\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n3_4_2 UC4.2-Read\n\n\nBrief-description\n\n\nscenario 1 - actief\nEen klant neemt contact op met de klantenservice om zijn adres te laten wijzigen, de medewerker zoekt de klant op en \"leest hem\" uit.\n\n\nscenario 2 - passief\nEen klant is ingelogd en wil een auto gaan reserveren. Tijdens dit proces en voor het doorvoeren van een nieuwe reservering moet het systeem een check uitvoeren om te kijken of de klant bv. al een reservering heeft (en dus niet nog een auto mag reserveren).\n\n\nSystem Sequence Diagram Iteratie 1\n\n\n\n\nPath to image : SSD_UC4-Read\n\n\nSystem Sequence Diagram Iteratie 2\n\n\n\n\nPath to image : SSD_UC4-Read_v2\n\n\nFully-dressed Description\n\n\n**Info:**\n\n* Primary actor: Werknemer\n* Stakeholders and interests:\n* Precondities: De werknemer is ingelogd op het systeem.\n* Postcondities:De werknemer kan de gegevens van een klant inzien.\n\n\n\n\nBasic flow:\n\n\n1. De werknemer geeft aan klanten in te willen zien.\n2. Het systeem toont alle klanten\n\n\n\n\nAlternative flow:\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n3_4_3 UC4.3-Update\n\n\nBrief-description\n\n\nDe medewerker wil een klant op inactief zetten wegens nieuwe gebreken aan de auto die hij de week ervoor heeft gehuurd.\nDe medewerker zoekt desbetreffende klant op in het systeem.\nHet systeem geeft alle informatie van de klant.\nDe medewerker geeft aan deze informatie aan te willen passen.\nHet systeem zorgt dat dit mogelijk is.\nDe medewerker zet de klant op inactief en slaat de wijzigingen op.\n\n\nSystem Sequence Diagram Iteratie 1\n\n\n\n\nPath to image : SSD_UC4-Update\n\n\nSystem Sequence Diagram Iteratie 2\n\n\n\n\nPath to image : SSD_UC4_BeheerKlant_Update\n\n\nFully-dressed Description\n\n\n**Info:**\n\n* Primary actor: Werknemer\n* Stakeholders and interests:\n* Precondities: De werknemer heeft [usecase 4.2](3_4_2-uc4-2-read) uitgevoerd.\n* Postcondities:De werknemer heeft de gegevens van een klant aangepast.\n\n\n\n\n**Basic flow:**\n\n1. De werknemer zoekt de klant op waar de gegevens van veranderd moeten worden.\n2. Het systeem toont alle gegevens van deze klant.\n3. De werknemer verandert alle gegevens die veranderd moeten worden.\n4. De werknemer geeft aan klaar te zijn met gegevens aanpassen.\n5. Het systeem slaat alle gegevens op.\n\n\n\n\n**Alternative flow:**\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n3_4_3 UC4.4-Delete\n\n\nBrief-description\n\n\nEen klant is meer als 5 jaar inactief geweest en heeft nog nooit een reservering geplaatst.\n\n\nSystem Sequence Diagram Iteratie 1\n\n\n\n\nPath to image : SSD_UC4-Delete\n\n\nSystem Sequence Diagram Iteratie 2\n\n\n\n\nPath to image : SSD_UC4-Delete\n\n\nFully-dressed Description\n\n\n**Info:**\n\n\n\n\n\n\nPrimary actor: Werknemer\n\n\nStakeholders and interests:\n\n\nPrecondities: De werknemer heeft usecase 4.2 uitgevoerd.\n\n\nPostcondities:De werknemer heeft een klant inactief gemaakt.\n\n\n\n\n**Basic flow:**\n\n\n\n\n\n\nDe werknemer zoekt de klant die op inactief gezet moet worden.\n\n\nDe werknemer zet de klant op inactief.\n\n\nHet systeem vraagt een reden op te geven waarom de klant inactief gezet wordt.\n\n\nDe werknemer geeft een reden op.\n\n\nHet systeem geeft een melding dat de klant nu inactief is.\n\n\n\n\n**Alternative flow:**\n\n\n\n\n3_5 UC5: beheer auto\n\n\n\n\nUC5.1 Create\n\n\nbrief-description\n\n\nEen medewerker wil een nieuwe personenauto op standplaats 3 in Zeist met kentekennummer 'XY-3J-4I' toevoegen.\nDe medewerker geeft aan een nieuwe auto toe te willen voegen.\nHet systeem vraagt het kenteken, type, en standplaats op te geven.\nDe medwerker geeft een personenauto met kentekennummer 'XY-3J-4I' op standplaats 3 in Zeist op.\nDe medewerker geeft aan klaar te zijn.\nHet systeem slaat de gegevens op.\n\n\nActivity Diagram\n\n\n\n\nPath to image : AD_UC5_BeheerAuto_Create\n\n\nFully-dressed Description\n\n\n**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft use case 5.2 uitegevoerd.\n- Postcondities:De werknemer heeft een nieuwe auto toegevoegd.\n\n\n\n\n**Basic flow:**\n\n1. De Werknemer geeft aan een nieuwe auto toe te willen voegen.\n2. Het systeem vraagt om het kenteken, type, en standplaats.\n3. De werknemer geeft het kenteken, type, en standplaats op.\n4. De werknemer geeft aan klaar te zijn een nieuwe auto toevoegen.\n5. Het systeem slaat alle gegevens op.\n\n\n\n\n\n**Alternative flow:**\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\nUC5.2 Read\n\n\nbrief-description\n\n\nDe medewerker wil graag de gegevens van auto's in kunnen zien.\nDe medewerker geeft aan de gegevens van auto's in te willen zien.\nHet systeem toont een lijst van auto's.\n\n\nActivity Diagram\n\n\n\n\nPath to image : AD_UC5_BeheerAuto_Read\n\n\nFully-dressed Description\n\n\n**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer is ingelogd op het systeem.\n- Postcondities:De werknemer kan de gegevens van een auto inzien.\n\n\n\n\n\n**Basic flow:**\n\n1. De werknemer geeft aan auto's in te willen zien.\n2. Het systeem toont alle auto's.\n\n\n\n\n\n**Alternative flow:**\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\nUC5.3 Update\n\n\nbrief-description\n\n\n\n\nDe medewerker wil het kenteken aanpassen van de kapotte auto. (er komt een vervangende auto op de plek van de kapotte auto, deze nieuwe auto krijgt dezelfde standplaats en is van het zelfde type als de kapotte auto. Het kenteken is daarentegen anders)\nDe medewerker zoekt de kapotte auto op in het systeem.\nHet systeem geeft alle informatie van deze auto.\nDe medewerker geeft aan deze informatie aan te willen passen.\nHet systeem zorgt dat dit mogelijk is.\nDe medewerker past het kenteken aan en slaat de wijzigingen op.\n\n\nActivity Diagram\n\n\n\n\nPath to image : AD_UC5_BeheerAuto_Update\n\n\nFully-dressed Description\n\n\n**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft usecase 4.2 uitgevoerd.\n- Postcondities:De werknemer heeft de gegevens van een auto aangepast.\n\n\n\n\n\n**Basic flow:**\n\n1. De werknemer zoekt de auto op waar de gegevens van veranderd moeten worden.\n2. Het systeem toont alle gegevens van deze auto.\n3. De werknemer verandert alle gegevens die veranderd moeten worden.\n4. De werknemer geeft aan klaar te zijn met gegevens aanpassen.\n5. Het systeem slaat alle gegevens op.\n\n\n\n\n**Alternative flow:**\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\nUC5.4 Delete\n\n\nbrief-description\n\n\nDe medewerker wil een personenauto verwijderen die totalloss gereden is verwijderen.\nDe medewerker geeft aan de auto te willen verwijderen.\nHet systeem geeft aan dat de auto verwijderd is.\n\n\nActivity Diagram\n\n\n\n\nPath to image : AD_UC5_BeheerAuto_Update\n\n\nFully-dressed Description\n\n\n**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft usecase 4.2 uitgevoerd.\n- Postcondities:De werknemer heeft een auto uit het systeem gehaald.\n\n\n\n\n\n**Basic flow:**\n\n1. De werknemer zoekt de auto die uit het systeem gehaald moet worden.\n2. Het systeem toont alle informatie van deze auto.\n3. De werknemer geeft aan dat deze auto uit het systeem gehaald moet worden.\n4. Het systeem geeft een melding dat de auto uit het systeem gehaald is.\n\n\n\n\n\n**Alternative flow:**\n\n\n\n\n---\n\n\n| \nnaar boven\n |\n\n\n\n\n4 Domain Model\n\n\nIteratie 1\n\n\n\n\nPath to image : Domein Model-Iteratie 1\n\n\nIteratie 2\n\n\n\n\nPath to image : Domein Model-Iteratie 2\n\n\n| \nnaar boven\n |\n\n\n\n\n!TIP!\n Description of all conceptual classes are in the Glossary\n\nGlossary\n\n\n\n\n(30-10)\nWij hebben het concept: \nreservering\n uit het domeinmodel, vertaald naar \n  betalingsinterface \n in \nde conceptuele klasse\n.\n\n\n(30-10)\n- Het probleem dat een reservering momenteel een directe asociatie heeft met auto.\n- rare situatie\n\n\n(30-10)\nAbbonoment reservering betapen het huurbedrag. in het huidige model is er geen methode om deze om te zetten. Hiervoor adviseren om een klasse hiertussen te zetten die een strategy patern uitvoert.\n- Reservering hoeft niks te weten of een bedrag. Daarom dit atribuut weggehaalt.\n\n\n\n\n\n\n5 Suplementary-Specification\n\n\nFURPS\n\n\n\n\n5_1 Functional\n\n\n\n\nfeatures, capabilities, security\n\n\n\n\n\n\n\n\n\n\nF-R-C\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\nF-R-1\n\n\nNa de registratie van een klant moet altijd de volgende informatie door het systeem zijn opgeslagen: \n \n1. naam; 2. Adres; 3. Woonplaats; 4. E-mailadres 5. Rekeningnummer\n\n\n\n\n\n\nF-R-2\n\n\nNadat een klant is geregistreerd ontvangt de klant, zijn lidmaatschap pasje thuisgestuurd. \n Op de pas staat een nummer. De klant kan nu inloggen op de website \n met zijn e-mail als gebruikersnaam en zijn pasnummer als wachtwoord.\n\n\n\n\n\n\nF-R-3\n\n\nDe kosten van het gebruik van een auto worden na het uitchecken van de auto, \n automatisch afgeschreven van de bankrekening van de klant.\n\n\n\n\n\n\nF-R-4\n\n\nEen medewerker kan een klant bij betalingsachterstand of schade, inactief maken.\n\n\n\n\n\n\nF-R-5\n\n\nIngecheckte auto\u2019s mogen niet op de red-cars parkeerplaats staan zonder te zijn uitgecheckt.\n\n\n\n\n\n\nF-R-6\n\n\nEen auto mag niet worden gereserveerd en ingecheckt als er een betalingsachterstand is.\n\n\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n5_2 Usability\n\n\n\n\nhuman factors, help, documentation\n\n\n\n\n\n\n\n\n\n\nU-R-C\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\nU-R-1\n\n\nDe auto\u2019s moeten zo goed mogelijk door meerdere klanten gebruikt worden. \n Hiervoor moet red-cars precies weten wanneer auto\u2019s in gebruik zijn.\n\n\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n5_3 Reliability\n\n\n\n\nfrequency of failure, recoverability, predictability\n\n\n\n\n\n\n\n\n\n\nR-R-C\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\nR-R-1\n\n\nZien waar auto\u2019s geparkeerd staan en/of ze beschikbaar zijn moet eenvoudig en snel kunnen, \n ook als er veel klanten tegelijkertijd boeken.\n\n\n\n\n\n\nR-R-2\n\n\nEen klant mag niet vaker als 1 keer tegelijkertijd zijn ingecheckt.\n\n\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n5_4 Performance\n\n\n\n\nresponse times, throughput, accuracy, availability, resource\nusage.\n\n\n\n\n\n\n\n\n\n\nP-R-C\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\nP-R-1\n\n\nEen ingelogde klant moet snel en eenvoudig kunnen zien waar auto\u2019s geparkeerd staan, \n ook als er veel klanten tegelijkertijd boeken.\n\n\n\n\n\n\nP-R-2\n\n\n..\n\n\n\n\n\n\n\n\n| \nnaar boven\n |\n\n\n\n\n5_5 Supportability\n\n\n\n\nadaptability, maintainability, inter\nnationalization,configurability.\n\n\n\n\n\n\n\n\n\n\nS-R-C\n\n\nBeschrijving\n\n\n\n\n\n\n\n\n\n\nS-R-1\n\n\nAlle klantgegevens moeten in het systeem kunnen worden aangepast door een werknemer.\n\n\n\n\n\n\nS-R-2\n\n\nAlle autogegevens moeten in het systeem kunnen worden aangepast door een werknemer.\n\n\n\n\n\n\nS-R-3\n\n\nDe verschillende type auto\u2019s en abonnementen moeten eenvoudig kunnen worden uitgebreid.\n Inclusief de bijbehorende berekening.\n\n\n\n\n\n\nS-R-4\n\n\nHet betalingsinterface moet door ons worden ontworpen.\n\n\n\n\n\n\n\n\n| \nnaar boven\n |", 
+            "title": "SRS"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#software-requirements-specification", 
+            "text": "", 
+            "title": "Software Requirements Specification"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#inhoudsopgave", 
+            "text": "1. Introductie opdracht  De doelstelling van RedCars \n- 2. UseCase Model    2.1 UseCase Diagram  2.1.1 Extend relatie  2.1.2 Include relatie  2.2 Actor-goal list    3 Overzicht Use Case's  3.1 UC1: reserveer auto  3.2 UC2: gebruik auto  3.3 UC3: betalen  3.4 UC4: beheer klant  3.4.1 UC4.1-Create  3.4.2 UC4.2-Read  3.4.3 UC4.3-Update  3.4.4 UC4.4-Delete    3.5 UC5: beheer auto    4 Domain model  5 Supplementary_Specification  5.1 Functional  5.2 Usability  5.3 Reliability  5.4 Performance  5.5 Supportability", 
+            "title": "Inhoudsopgave"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#1-introductie-opdracht", 
+            "text": "Wij voeren de casus uit voor autoverhuurbedrijf RentIt. Zij willen een nieuwe service gaan aanbieden, namelijk het verhuren van deelauto's.    Het doel van dit document is om op gestructureerde wijze een analyse te verkrijgen van het gevraagde systeem.\nWaarna in het  Software Design Description  een ontwerp beschreven staat voor dit systeem. In dit document beschrijven wij de meest actuele versie van deze analyse.", 
+            "title": "1 Introductie opdracht"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#1_1-de-doelstelling-van-redcars", 
+            "text": "Wij willen een autoverhuur service aanbieden, waarbij de vraag naar auto's bepaald waar de auto's gestationeerd worden. Nu gebeurt dit met name gecentraliseerd, vanuit een specifieke locatie.  Voor dit probleem is ons gevraagd een analyse en ontwerp te realiseren.", 
+            "title": "1_1 De doelstelling van RedCars"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#2-use-case-model", 
+            "text": "", 
+            "title": "2 Use Case Model"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#2_1-usecase-diagram", 
+            "text": "", 
+            "title": "2_1 UseCase Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#2_1_1-extend-relatie", 
+            "text": "UC1-reserveerAuto  extends  UC2-gebruikAuto    De extend relatie tussen UC1 en UC2 hebben wij geplaatst omdat zonder deze extend, UC2-gebruikAuto ook uitgevoerd kan worden (volgens het Use Case Diagram) zonder dat er eerst een reservering is gedaan door een klant.    Daarnaast kan je een auto reserveren maar is dat niet in 100% van de gevallen garantie voor het gebruiken van de auto.", 
+            "title": "2_1_1 Extend relatie"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#2_1_2-include-relatie", 
+            "text": "UC2-gebruikAuto  include  UC3-betalen   Het gebruiken van een auto leidt altijd tot een betaling, waarna vervolgens opnieuw een auto gereserveerd mag worden. Mocht de automatische afschrijving niet slagen dan kan er geen nieuwe reservering geplaatst worden. Door deze sterke relatie en ook afhankelijkheid hebben we de include relatie toegepast.   Opmerking: wij hebben ook overwogen om nog een include relatie, toe te voegen tussen UC1-reserveerAuto en UC3-betalen. Omdat na een reservering altijd een betaling volgt ookal wordt UC2-gebruikAuto niet uitgevoerd.", 
+            "title": "2_1_2 Include relatie"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#2_2-actor-goal-list", 
+            "text": "AA.  Actor  Beschrijving      1  Klant  Wil een dienst afnemen bij RedCars autoverhuur. Hierbij wil de klant een keuze aanbod hebben om binnen een gekozen tijdsbestek een auto naar keuze te kunnen huren.    2  Medewerker  Wil zijn taken als medewerker correct, snel en met gemak kunnen uitvoeren.    3  Tijd  Tijd is volgens onze analyse de primaire actor voor de UC3-betalen. Er wordt namelijk een automatisch afschrijving uitgevoerd. Weliswaar door een externe dienst,  toch is tijd 'degene' die de trigger zal moeten geven om de betaling af te schrijven . De kosten voor het huren van een wagen, kunnen pas nadat een klant heeft uitgecheckt, bepaald worden ( huurbedrag + kilometerkosten + evt. boete )    4  Betalingsdienst  Het betalingsdienst is volgens onze analyse een secundaire actor. Uiteraard zal deze externe partij betalingen voor hun klanten (in ons geval RedCars) correct willen regelen. Voor onze situatie levert het betalingsdienst een dienst aan ons systeem.    5  RedCars Management  Deze actor komt niet expliciet voor in ons usecase diagram. Om diverse redenen zou je deze actor, zeker voor een 'echte' opdrachtgever, kunnen opnemen in use cases. M.b.t. dit beroepsproduct hebben wij ervoor gekozen om deze actor niet actief te beschrijven.     Opmerking: De beschrijving bevat wishful thinking. De kerntaken hebben in overleg met onze docent besproken. De rest hebben we aangevuld met, volgens ons, algemeen aanvaardbare omschrijvingen.", 
+            "title": "2_2 Actor-goal list"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3-use-case-descriptions", 
+            "text": "Hieronder worden de alle noodzakelijke use cases beschreven.  Bij elke uitwerking van een use case hebben wij een vast formaat gehanteerd waardoor wij denken dat we bijdragen aan positieve traceability tussen de onderdelen in de analyse en het design.  Use Case Descriptions Format\n\n* De brief-description.\n* Een afbeelding van het bijbehorende System Sequence Diagram.\n* De Fully-Dressed Use Case description.\n* Een link naar de glossary, met daarin beschreven systeemoperaties.\n* Een link naar de bijbehorende Component Sequence Diagram in het SDD.", 
+            "title": "3 Use Case Descriptions"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_0-overzicht-use-cases", 
+            "text": "Wij hebben ervoor gekozen om de volgende 5 hoofd-functionaliteiten te vertalen naar Use Cases.  Opmerking; wij hebben in overleg met de docent alle __brief-descriptions__ alszijnde een specifiek scenario, met een happy ending geschreven.  ```Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. WIj hebben ervoor gekozen 2 CRUD UseCases op een andere manier uit te voeren namelijk: UC4-beheerKlant en UC5-beheerAuto.  UC4-beheerKlant   4x System Sequence Diagrams  4x Component Sequence Diagram   UC5-beheerAuto   4x Activity diagram     [  UC1-reserveerAuto  ] [  uc2-gebruik-auto  ] [  UC3-betalen  ] [  UC4-beheerKlant  ]  [  UC5: beheer auto  ]", 
+            "title": "3_0 Overzicht Use Case's"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_1-uc1-reserveer-auto", 
+            "text": "", 
+            "title": "3_1 UC1: reserveer auto"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description", 
+            "text": "De klant wil een stationwagen huren voor een periode van een week.\nDe klant logt in op het systeem. Het systeem toont alle beschikbare autos.\nDe klant zoekt een beschikbare stationwagen bij de klant in de buurt, voor de volgende week.\nSysteem toont beschikbare stationwagens, bij hem in de buurt, voor die periode.\nDe klant maakt hieruit een keuze\nHet systeem stuurt een bevestiging.", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram", 
+            "text": "Path to image : SSD_UC1_reserveerAuto_v1-0-0", 
+            "title": "System Sequence Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description", 
+            "text": "** Info:**\n\n- Primary actor: Klant\n- Stakeholders and interests:\n- Precondities:\n    - De klant heeft een account bij RentIt\n    - De klant heeft een pas thuisgestuurd gekregen.\n    - De klant heeft geen betalingsachterstand bij RentIt\n- Postcondities:\n    - De klant heeft een bevestiging ontvangen met daarin:\n    - de huurperiode( van-datum -- tot-datum).\n    - De kale prijs van de huurperiode (exlusief gereden kilometers en evt. boete).\n    - Informatie over de gehuurde auto (bv het kenteken).\n    - De standplaats waar de klant de auto op kan halen.  ** Basic flow: **\n\n1. De klant logt in op de website met zijn emailadres en pasnummer.\n2. Het systeem kijkt of de klant een betalingsachterstand heeft.\n3. [__Nee__] De website geeft alle auto's en hun beschikbaarheid en standplaats weer.\n4. De klant geeft aan in welke stad hij de auto wil ophalen.\n5. [__1 of meer autos beschikbaar__] De website geeft alle beschikbare auto's in deze stad weer.\n6. De klant kiest een periode waarin hij/zij de auto wil gebruiken.\n7. [__1 of meer auto's beschikbaar__] Het systeem toont alle autos in die periode.\n8. De klant kiest het gewenste type auto.\n9. [__1 of meer auto's beschikbaar__] Het systeem toont alle auto's van het gekozen type.  \n10. De klant kiest een auto.\n11. Het systeem toont voor de gekozen instellingen de prijs zonder- en met abbonoment.  \n12. De klant kiest een van de twee opties.\n13. De website geeft een bevestiging van de reservering.  **Alternative flow:**\n\n- 3.a. [Ja] Het systeem toont een melding dat de betaling eerst voldaan moet zijn voordat de klant een nieuwe reservering mag plaatsen.\n- 5.a. [Er zijn geen autos beschikbaar in deze stad] Systeem toont melding en evt. optie om auto in andere stad te huren.\n- 7.a. [Er zijn geen autos beschikbaar in de gekozen periode] Systeem toont melding en evt. optie voor andere periode.\n- 9.a. [Er zijn geen autos van dit type beschikbaar] Systeem toont melding en evt. om auto van ander type te huren.", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_2-uc2-gebruik-auto", 
+            "text": "", 
+            "title": "3_2 UC2: gebruik auto"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_1", 
+            "text": "De klant wil zijn gehuurde auto gebruiken.\nDe klant checkt in.\nDe klant opent de auto met zijn pasje en start de auto.\nHet systeem registreert de starttijd van de rit.\nDe klant rijdt naar een bestemming.\nHet systeem registreert de eindtijd van de rit.\nDe klant zet de auto uit.\nHet systeem checkt of de huidige locatie de standplaats is,\nin dat geval wordt dit geregistreerd en geeft de mogelijkheid aan de klant om uit te checken.\nDe klant checkt uit.\nDe klant is wedergekeerd op de standplaats en doet de auto op slot met zijn pasje.", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram_1", 
+            "text": "Path to image : SSD_UC2-gebruikAuto", 
+            "title": "System Sequence Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_1", 
+            "text": "**Info: **\n\n* Primary actor:De klant\n* Stakeholders and interests:\n* Precondities:De klant heeft een auto gereserveerd. De klant is bij de auto.\n* Postcondities:De klant is wedergekeerd op de standplaats van de auto.  **Basic flow:**\n\n1. De klant checkt in.\n2. Het systeem registreert wie welke auto gaat gebruiken.\n3. De klant opent de auto.\n4. De klant stapt in.\n5. De klant start de auto.\n6. Het systeem registreert de begintijd van de rit.\n7. De klant rijdt naar zijn bestemming.\n8. De klant stopt de auto.\n9. Het systeem registreert de eindtijd en het aantal gereden kilometers van de rit.\n10. Het systeem controleert of de huidige locatie zijn standplaats is.\n11. [Ja] Het systeem controleert of de reservering van deze klant is afgelopen.\n12. [Ja] Het systeem geeft de mogelijkheid uit te checken.\n13. De klant checkt uit.\n14. Het systeem controleert of de klant te laat is\n15. [Nee] Het systeem stuurt alle informatie op voor verwerking  **Alternative flow:**\n\n* 11.a. [Nee] stappen 5 tot en met 11 worden uitgevoerd.\n* 12.a. [Nee] Het systeem geeft een melding dat de reservering nog niet is afgelopen\nGa verder bij stap 4\n* 14.a. [Ja] Het systeem registreert het aantal uren dat de auto te lang gebruikt is.\n* 14.b. Het systeem stuurt alle informatie op voor verwerking inclusief de melding dat de auto te lang gebruikt is.   [ ] Link to Component Sequence Diagram     |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_3-uc3-betalen", 
+            "text": "De Use Case betalen is een zogenaamde 'core functionality'. Het hele business model van RedCars is zonder een betaling onmogelijk om op de huidige manier te realiseren. Vandaar dat gevraagd is deze Use Case prioriteit te geven in de eerste Iteratie, en in de tweede iteratie te verbeteren. Om dit proces te illustreren hebben we bij deze Use Case beide iteraties geillustreerd. De eerste uit iteratie 1 en de tweede uit iteratie 2.", 
+            "title": "3_3 UC3: betalen"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description-iteratie-1", 
+            "text": "Het betalingsinterface wil de rekening van de klant, die een abonnement gratis, station, per week abonnement en geen schulden heeft, afschrijven.\nHet betalingsinterface vraagt aan het systeem of de klant buiten zijn gereserveerde periode is gegaan.\nHet systeem geeft aan dat dit niet het geval is.\nHet betalingsinterface vraagt aan het systeem welk abonnement de klant heeft.\nHet systeem geeft aan dat de klant een gratis, stationwagen, per week abonnement heeft.\nHet betalingsinterface berekent de huidige prijs voor de klant.\nHet betalingsinterface vraagt hoeveel km de klant gereden heeft.\nHet systeem geeft aan dat de klant 300 km heeft gereden.\nHet betalingsinterface berekent opnieuw de huidige prijs.\nHet betalingsinterface schrijft de rekening van de klant zijn rekening af.", 
+            "title": "Brief-description Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-1", 
+            "text": "Path to image : SSD_UC3-betalen", 
+            "title": "System Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description-iteratie-2", 
+            "text": "Op het moment dat er een reservering wordt geplaatst, staat er een eindtijd in het systeem. RedCars levert een dienst met een 'contract', dat gaat buiten de scope van dit project. In dit contract staat (hoogstwaarschijnlijk) een termijn van bv. 5 werkdagen. Op de eindtijd van een specifieke reservering start dan deze termijn. Na verloop van tijd wordt dus de reservering getriggerd om tot betaling over te gaan.", 
+            "title": "Brief-description Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-2", 
+            "text": "Path to image : SSD_UC3-betalen", 
+            "title": "System Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_2", 
+            "text": "**Info:**\n\n* Primary actor:\n    - Tijd\n\n* Stakeholders and interests:\n    - Klant; de klant wil op tijd betalen voor zijn huur\n    - Betalingssysteem: wil de afgesproken dienst met RedCars na komen.\n\n* Pre-condities:\n    - De reservering en de afgesproken termijn zijn afgelopen.\n    - De klant heeft automatisch afschrijven ingesteld.\n\n* Post-condities:\n    - De huur is van de klant zijn rekening afgeschreven.  **Basic flow:**\n\n1. Het betalingsinterface vraagt aan het systeem of de klant buiten zijn gereserveerde periode is gegaan.\n2. [Nee] Het betalingsinterface vraagt aan het systeem welk abonnement de klant heeft.\n3. Het systeem geeft door welk abonnement de klant heeft.\n4. Het betalingsinterface vraagt hoeveel kilometers de klant gereden heeft.\n5. Het systeem geeft het aantal gereden kilometers door.\n6. Het betalingsinterface berekent de prijs.\n7. Het betalingsinterface schrijft de rekening van de klant zijn rekening af.  **Alternative flow:**\n\n* 2.a. [Ja] Het betalingsinterface vraagt aan het systeem hoeveel uur er meer gereden is.\n* 2.b. Het betalingsinterface rekent het huurbedrag als boete.\nuse case gaat verder bij stap 2.", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#systeemoperaties", 
+            "text": "[ ] link to Component sequence diagram    |  naar boven  |", 
+            "title": "Systeemoperaties"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_4-uc4-beheer-klant", 
+            "text": "CRUD Use Case. Create Read Update Delete  Deze use case is er een van administratieve taak. Het beheren van klanten is echter meer dan alleen statische klantinformatie bijhouden. Zo moeten er meerdere automatische checks worden uitgevoerd die betrekking hebben op een klant of klant-gerelateerde informatie (bv. klant mag niet reserveren met betalingsachterstand).", 
+            "title": "3_4 UC4: beheer klant"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#uc4_1-create", 
+            "text": "", 
+            "title": "UC:4_1-Create"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_2", 
+            "text": "Het aanmaken van een klant gebeurd op de website van RedCars. De website zelf buiten de scope van deze opdracht. Wel is gevraagd om de situatie te 'mocken'. Voor de registratie van een nieuwe klant hebben wij in ieder geval de NAW-gegevens nodig. Daarnaast een email-adres (tevens de gebruikersnaam op de website) en een rekeningnummer om de kosten automatisch vanaf te schrijven.", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-1_1", 
+            "text": "Path to image : SSD_UC4-Create", 
+            "title": "System Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-2_1", 
+            "text": "", 
+            "title": "System Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_3", 
+            "text": "**Info:**\n\n* Primary actor: Klant\n* Stakeholders and interests:\n* Precondities: De klant heeft de website van RendIt openstaan.\n* Postcondities:De klant heeft een account op de website.  **Basic flow:**\n\n1. De klant geeft aan dat hij zich wil registreren.\n2. Het systeem vraagt om zijn naam, adres, woonplaats, emailadres en bankrekeningnummer door te geven.\n3. De klant geeft zijn naam, adres woonplaats, emailadres en bankrekeningnummer op.\n4. Het systeem vraagt of de klant goedkeuring geeft om rekeningen automatisch af te laten schrijven.\n5. [Ja] De klant geeft deze goedkeuring.\n6. Het systeem laat ingegoerde gegevens zien, en vraagt aan de klant of deze correct zijn.\n7. [Ja] De klant geeft aan dat de ingevoerde gegevens correct zijn.\n8. Het systeem controleert of het aan te maken account nog niet bestaat.\n8. [Ja] Het systeem geeft een bevestiging dat het account is aangemaakt\n9. Het systeem geeft aan dat de pas onderweg wordt opgestuurd.  **Alternative flow:**\n\n* 4.a. [Nee] Systeem geeft aan dat het niet mogelijk is een account aan te maken zonder automatische goedkeuring.\n* 7.a. [Nee] Systeem vraagt aan de klant om de onjuiste gegevens aan te passen.\nUse Case gaat verder bij stap 2.\n* 9.a. [Nee] Het systeem geeft aan dat er al een account bestaat, met de huidige gegevens.\n* 9.b Het systeem geeft aan dat de klant contact moet opnemen met de klantenservice.   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_4_2-uc42-read", 
+            "text": "", 
+            "title": "3_4_2 UC4.2-Read"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_3", 
+            "text": "scenario 1 - actief\nEen klant neemt contact op met de klantenservice om zijn adres te laten wijzigen, de medewerker zoekt de klant op en \"leest hem\" uit.  scenario 2 - passief\nEen klant is ingelogd en wil een auto gaan reserveren. Tijdens dit proces en voor het doorvoeren van een nieuwe reservering moet het systeem een check uitvoeren om te kijken of de klant bv. al een reservering heeft (en dus niet nog een auto mag reserveren).", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-1_2", 
+            "text": "Path to image : SSD_UC4-Read", 
+            "title": "System Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-2_2", 
+            "text": "Path to image : SSD_UC4-Read_v2", 
+            "title": "System Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_4", 
+            "text": "**Info:**\n\n* Primary actor: Werknemer\n* Stakeholders and interests:\n* Precondities: De werknemer is ingelogd op het systeem.\n* Postcondities:De werknemer kan de gegevens van een klant inzien.  Basic flow:  1. De werknemer geeft aan klanten in te willen zien.\n2. Het systeem toont alle klanten  Alternative flow:   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_4_3-uc43-update", 
+            "text": "", 
+            "title": "3_4_3 UC4.3-Update"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_4", 
+            "text": "De medewerker wil een klant op inactief zetten wegens nieuwe gebreken aan de auto die hij de week ervoor heeft gehuurd.\nDe medewerker zoekt desbetreffende klant op in het systeem.\nHet systeem geeft alle informatie van de klant.\nDe medewerker geeft aan deze informatie aan te willen passen.\nHet systeem zorgt dat dit mogelijk is.\nDe medewerker zet de klant op inactief en slaat de wijzigingen op.", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-1_3", 
+            "text": "Path to image : SSD_UC4-Update", 
+            "title": "System Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-2_3", 
+            "text": "Path to image : SSD_UC4_BeheerKlant_Update", 
+            "title": "System Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_5", 
+            "text": "**Info:**\n\n* Primary actor: Werknemer\n* Stakeholders and interests:\n* Precondities: De werknemer heeft [usecase 4.2](3_4_2-uc4-2-read) uitgevoerd.\n* Postcondities:De werknemer heeft de gegevens van een klant aangepast.  **Basic flow:**\n\n1. De werknemer zoekt de klant op waar de gegevens van veranderd moeten worden.\n2. Het systeem toont alle gegevens van deze klant.\n3. De werknemer verandert alle gegevens die veranderd moeten worden.\n4. De werknemer geeft aan klaar te zijn met gegevens aanpassen.\n5. Het systeem slaat alle gegevens op.  **Alternative flow:**   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_4_3-uc44-delete", 
+            "text": "", 
+            "title": "3_4_3 UC4.4-Delete"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_5", 
+            "text": "Een klant is meer als 5 jaar inactief geweest en heeft nog nooit een reservering geplaatst.", 
+            "title": "Brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-1_4", 
+            "text": "Path to image : SSD_UC4-Delete", 
+            "title": "System Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#system-sequence-diagram-iteratie-2_4", 
+            "text": "Path to image : SSD_UC4-Delete", 
+            "title": "System Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_6", 
+            "text": "**Info:**   Primary actor: Werknemer  Stakeholders and interests:  Precondities: De werknemer heeft usecase 4.2 uitgevoerd.  Postcondities:De werknemer heeft een klant inactief gemaakt.   **Basic flow:**   De werknemer zoekt de klant die op inactief gezet moet worden.  De werknemer zet de klant op inactief.  Het systeem vraagt een reden op te geven waarom de klant inactief gezet wordt.  De werknemer geeft een reden op.  Het systeem geeft een melding dat de klant nu inactief is.   **Alternative flow:**", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#3_5-uc5-beheer-auto", 
+            "text": "", 
+            "title": "3_5 UC5: beheer auto"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#uc51-create", 
+            "text": "", 
+            "title": "UC5.1 Create"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_6", 
+            "text": "Een medewerker wil een nieuwe personenauto op standplaats 3 in Zeist met kentekennummer 'XY-3J-4I' toevoegen.\nDe medewerker geeft aan een nieuwe auto toe te willen voegen.\nHet systeem vraagt het kenteken, type, en standplaats op te geven.\nDe medwerker geeft een personenauto met kentekennummer 'XY-3J-4I' op standplaats 3 in Zeist op.\nDe medewerker geeft aan klaar te zijn.\nHet systeem slaat de gegevens op.", 
+            "title": "brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#activity-diagram", 
+            "text": "Path to image : AD_UC5_BeheerAuto_Create", 
+            "title": "Activity Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_7", 
+            "text": "**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft use case 5.2 uitegevoerd.\n- Postcondities:De werknemer heeft een nieuwe auto toegevoegd.  **Basic flow:**\n\n1. De Werknemer geeft aan een nieuwe auto toe te willen voegen.\n2. Het systeem vraagt om het kenteken, type, en standplaats.\n3. De werknemer geeft het kenteken, type, en standplaats op.\n4. De werknemer geeft aan klaar te zijn een nieuwe auto toevoegen.\n5. Het systeem slaat alle gegevens op.  **Alternative flow:**   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#uc52-read", 
+            "text": "", 
+            "title": "UC5.2 Read"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_7", 
+            "text": "De medewerker wil graag de gegevens van auto's in kunnen zien.\nDe medewerker geeft aan de gegevens van auto's in te willen zien.\nHet systeem toont een lijst van auto's.", 
+            "title": "brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#activity-diagram_1", 
+            "text": "Path to image : AD_UC5_BeheerAuto_Read", 
+            "title": "Activity Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_8", 
+            "text": "**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer is ingelogd op het systeem.\n- Postcondities:De werknemer kan de gegevens van een auto inzien.  **Basic flow:**\n\n1. De werknemer geeft aan auto's in te willen zien.\n2. Het systeem toont alle auto's.  **Alternative flow:**   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#uc53-update", 
+            "text": "", 
+            "title": "UC5.3 Update"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_8", 
+            "text": "De medewerker wil het kenteken aanpassen van de kapotte auto. (er komt een vervangende auto op de plek van de kapotte auto, deze nieuwe auto krijgt dezelfde standplaats en is van het zelfde type als de kapotte auto. Het kenteken is daarentegen anders)\nDe medewerker zoekt de kapotte auto op in het systeem.\nHet systeem geeft alle informatie van deze auto.\nDe medewerker geeft aan deze informatie aan te willen passen.\nHet systeem zorgt dat dit mogelijk is.\nDe medewerker past het kenteken aan en slaat de wijzigingen op.", 
+            "title": "brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#activity-diagram_2", 
+            "text": "Path to image : AD_UC5_BeheerAuto_Update", 
+            "title": "Activity Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_9", 
+            "text": "**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft usecase 4.2 uitgevoerd.\n- Postcondities:De werknemer heeft de gegevens van een auto aangepast.  **Basic flow:**\n\n1. De werknemer zoekt de auto op waar de gegevens van veranderd moeten worden.\n2. Het systeem toont alle gegevens van deze auto.\n3. De werknemer verandert alle gegevens die veranderd moeten worden.\n4. De werknemer geeft aan klaar te zijn met gegevens aanpassen.\n5. Het systeem slaat alle gegevens op.  **Alternative flow:**   |  naar boven  |", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#uc54-delete", 
+            "text": "", 
+            "title": "UC5.4 Delete"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#brief-description_9", 
+            "text": "De medewerker wil een personenauto verwijderen die totalloss gereden is verwijderen.\nDe medewerker geeft aan de auto te willen verwijderen.\nHet systeem geeft aan dat de auto verwijderd is.", 
+            "title": "brief-description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#activity-diagram_3", 
+            "text": "Path to image : AD_UC5_BeheerAuto_Update", 
+            "title": "Activity Diagram"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#fully-dressed-description_10", 
+            "text": "**Info:**\n\n- Primary actor: Werknemer\n- Stakeholders and interests:\n- Precondities: De werknemer heeft usecase 4.2 uitgevoerd.\n- Postcondities:De werknemer heeft een auto uit het systeem gehaald.  **Basic flow:**\n\n1. De werknemer zoekt de auto die uit het systeem gehaald moet worden.\n2. Het systeem toont alle informatie van deze auto.\n3. De werknemer geeft aan dat deze auto uit het systeem gehaald moet worden.\n4. Het systeem geeft een melding dat de auto uit het systeem gehaald is.  **Alternative flow:**", 
+            "title": "Fully-dressed Description"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#-", 
+            "text": "|  naar boven  |", 
+            "title": "---"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#4-domain-model", 
+            "text": "", 
+            "title": "4 Domain Model"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#iteratie-1", 
+            "text": "Path to image : Domein Model-Iteratie 1", 
+            "title": "Iteratie 1"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#iteratie-2", 
+            "text": "Path to image : Domein Model-Iteratie 2  |  naar boven  |   !TIP!  Description of all conceptual classes are in the Glossary Glossary   (30-10)\nWij hebben het concept:  reservering  uit het domeinmodel, vertaald naar    betalingsinterface   in  de conceptuele klasse .  (30-10)\n- Het probleem dat een reservering momenteel een directe asociatie heeft met auto.\n- rare situatie  (30-10)\nAbbonoment reservering betapen het huurbedrag. in het huidige model is er geen methode om deze om te zetten. Hiervoor adviseren om een klasse hiertussen te zetten die een strategy patern uitvoert.\n- Reservering hoeft niks te weten of een bedrag. Daarom dit atribuut weggehaalt.", 
+            "title": "Iteratie 2"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5-suplementary-specification", 
+            "text": "FURPS", 
+            "title": "5 Suplementary-Specification"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5_1-functional", 
+            "text": "features, capabilities, security      F-R-C  Beschrijving      F-R-1  Na de registratie van een klant moet altijd de volgende informatie door het systeem zijn opgeslagen:    1. naam; 2. Adres; 3. Woonplaats; 4. E-mailadres 5. Rekeningnummer    F-R-2  Nadat een klant is geregistreerd ontvangt de klant, zijn lidmaatschap pasje thuisgestuurd.   Op de pas staat een nummer. De klant kan nu inloggen op de website   met zijn e-mail als gebruikersnaam en zijn pasnummer als wachtwoord.    F-R-3  De kosten van het gebruik van een auto worden na het uitchecken van de auto,   automatisch afgeschreven van de bankrekening van de klant.    F-R-4  Een medewerker kan een klant bij betalingsachterstand of schade, inactief maken.    F-R-5  Ingecheckte auto\u2019s mogen niet op de red-cars parkeerplaats staan zonder te zijn uitgecheckt.    F-R-6  Een auto mag niet worden gereserveerd en ingecheckt als er een betalingsachterstand is.     |  naar boven  |", 
+            "title": "5_1 Functional"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5_2-usability", 
+            "text": "human factors, help, documentation      U-R-C  Beschrijving      U-R-1  De auto\u2019s moeten zo goed mogelijk door meerdere klanten gebruikt worden.   Hiervoor moet red-cars precies weten wanneer auto\u2019s in gebruik zijn.     |  naar boven  |", 
+            "title": "5_2 Usability"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5_3-reliability", 
+            "text": "frequency of failure, recoverability, predictability      R-R-C  Beschrijving      R-R-1  Zien waar auto\u2019s geparkeerd staan en/of ze beschikbaar zijn moet eenvoudig en snel kunnen,   ook als er veel klanten tegelijkertijd boeken.    R-R-2  Een klant mag niet vaker als 1 keer tegelijkertijd zijn ingecheckt.     |  naar boven  |", 
+            "title": "5_3 Reliability"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5_4-performance", 
+            "text": "response times, throughput, accuracy, availability, resource\nusage.      P-R-C  Beschrijving      P-R-1  Een ingelogde klant moet snel en eenvoudig kunnen zien waar auto\u2019s geparkeerd staan,   ook als er veel klanten tegelijkertijd boeken.    P-R-2  ..     |  naar boven  |", 
+            "title": "5_4 Performance"
+        }, 
+        {
+            "location": "/SRS_v1-0-4/#5_5-supportability", 
+            "text": "adaptability, maintainability, inter\nnationalization,configurability.      S-R-C  Beschrijving      S-R-1  Alle klantgegevens moeten in het systeem kunnen worden aangepast door een werknemer.    S-R-2  Alle autogegevens moeten in het systeem kunnen worden aangepast door een werknemer.    S-R-3  De verschillende type auto\u2019s en abonnementen moeten eenvoudig kunnen worden uitgebreid.  Inclusief de bijbehorende berekening.    S-R-4  Het betalingsinterface moet door ons worden ontworpen.     |  naar boven  |", 
+            "title": "5_5 Supportability"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/", 
+            "text": "Software Design Description\n\n\n\n\nInhoudsopgave\n\n\n\n\n\n\n\nDoel van dit document\n\n\nComponent Diagram\n\n\nOverzicht van alle componenten\n\n\n\n\n\n\nDetailed Design Description\n\n\nUC 1 Reserveringscomponent\n\n\nUC 2 Autocomponent\n\n\nUC 3 Betalingscomponent\n\n\nUC 4 Klantcomponent\n\n\nUC 5 Autobeheercomponent\n\n\n\n\n\n\nDesign Class Diagram\n\n\n\n\n\n\n\n\n\nIntroductie\n\n\nDe opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te verstrekken, kunt u \nnaar de \nIntroductie Opdracht\n  gaan.\n\n\n\n\nDoel van dit document\n\n\n\n\nSoftware Architectuur in grote lijnen beschrijven a.d.h.v. een componentdiagram.\n\n\nSysteem operaties over de individuele componenten beschrijven a.d.h.v. Component Sequence Diagrams.\n\n\nEen vertaling maken van concepten in het probleem(/opdracht)-domein naar code-concept a.d.h.v. een Design Class Diagram\n\n\n'Gedrag' van het systeem beschrijven a.d.h.v. andere interactie-diagrams zoals Activity diagrams en een statemachine.\n\n\nGemaakte keuzes in het ontwerp beargumenteren en verantwoorden.\n\n\n\n\n\n\nComponent Diagram\n\n\nIteratie 1\n\n\n\n\nPath to image : Component_Diagram_v1-0-1\n\n\nIteratie 2\n\n\n\n\nPath to image : Component_Diagram_v1-0-2\n\n\n\n\nOverzicht van alle componenten\n\n\n* Provided Interface\n* * required Interface\n\n\n\n\n\n\n\n\n\n\nComponent\n\n\n* Provided\n\n\n** Required\n\n\nComponent image with interfaces\n\n\n\n\n\n\n\n\n\n\nauto\n\n\nRitInfo\n\n\n\n\n\n\n\n\n\n\nautobeheer\n\n\nCheckInInfo\n\n\nritInfo,  reserveringsinfo\n\n\n\n\n\n\n\n\nreservering\n\n\nreserveringsinfo\n\n\nCheckInInfo, klantInfo\n\n\n\n\n\n\n\n\nwebapp\n\n\nwebInfo\n\n\n\n\n\n\n\n\n\n\nklant\n\n\nklantInfo\n\n\nwebInfo, betalingsInfo\n\n\n\n\n\n\n\n\nbetalingsdienst\n\n\nbetalingsInfo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDetailed Design Description\n\n\nHieronder worden de verschillende onderdelen verder uitgelegd.\n\n\nOm de beschrijvingen structuur te geven hanteren  bespreken we de onderdelen in hoofdlijn over de Use Cases. Hierbij geldt dat het soms relevant kan zijn om uit te wijden over ook andere onderdelen. Hierdoor kan overlap ontstaan.\n\n\nDetailed Design Descriptions Format\n\n* korte beschrijving van de koppeling tussen:\n  - De Use Case.\n  - Het ontworpen component.\n* Een component Sequence Diagram\n* Eventueel een Activity Diagram\n* Ontwerpbeslissingen met eventuele Design Patterns.\n\n\n\n\n\nOverzicht keuze type diagram\n\n\n\n\n\n\n\n\nUseCase-Code\n\n\nSSD\n\n\nCSD\n\n\nAD\n\n\nSM\n\n\n\n\n\n\n\n\n\n\n\n\nUC-1\n\n\nX\n\n\nX\n\n\n\n\n\n\n\n\n\n\n\n\nUC-2\n\n\nX\n\n\nX\n\n\nX\n\n\nX\n\n\n\n\n\n\n\n\nUC-3\n\n\nX\n\n\nX\n\n\n\n\n\n\n\n\n\n\n\n\nUC-4  (*CRUD)\n\n\nX\n\n\nX\n\n\n\n\n\n\n\n\n\n\n\n\nUC-5   (*CRUD)\n\n\n\n\n\n\nX\n\n\n\n\n\n\n\n\n\n\n\n\n*CRUD = Create Read Update Delete\n\n\n\n\n\n\nUC 1 Reserveringscomponent\n\n\nShort description\n\n\nHet reserveren van een auto bestaat uit grofweg 3 hoofd-onderdelen:\n\n\n\n\nInloggen en verificatie van de klant.\n\n\nCriteria aangeven voor het huren van een huurauto\n\n\nBevestigen van de reservering, praktische informatie verschaffen.\n\n\n\n\nComponent Sequence Diagram \nIteratie 1\n\n\n\n\nPath to image : CSD_UC1_reserverenAuto_iteratie1\n\n\nComponent Sequence Diagram \nIteratie 2\n\n\n\n\nPath to image : CSD_UC1_rserveerauto_iteratie2\n\n\nDesign decisions\n\n\nInloggen en verificatie van de klant.\n\n\n\n\nCriteria aangeven voor het huren van een huurauto\n\n\n\n\nBevestigen en praktische informatie\n\n\n\n\n\n\nUC 2 Autocomponent\n\n\nShort description\n\n\nHet gebruiken van een auto bestaat 3 hoofd-onderdelen:\n\n\n\n\n\n\nOpenen van een auto a.d.h.v. verificatie op de reservering\n\n\n\n\n\n\nHet maken van 1 of meer ritten tijdens de huurperiode\n\n\n\n\n\n\nHet doorvoeren van de gemaakte ritten na de huurperiode.\n\n\n\n\n\n\nOm de flow van  activiteiten extra te verduidelijken hebben we voor deze Use Case ook een activity diagram gemaakt.\n\n\nActivity Diagram\n\n\n\n\nPath to image : AD_Gebruik_Auto_iteratie_2\n\n\nComponent Sequence Diagram \nIteratie 1\n\n\n\n\nPath to image : CSD_UC2-gebruikAuto_iteratie_1\n\n\nComponent Sequence Diagram \nIteratie 2\n\n\n\n\nPath to image : CSD_UC2-gebruikAuto_iteratie_2\n\n\nState Machine Diagram\n\n\n\n\nDesign decisions\n\n\nOpenen van een auto a.d.h.v. verificatie op de reservering\n\n\n\n\nHet maken van 1 of meer ritten tijdens de huurperiode\n\n\n\n\nHet doorvoeren van de gemaakte ritten na de huurperiode.\n\n\n\n\nToevoegen van een boete\n\n\n\n\n\n\n\n\nUC 3 Betalingscomponent\n\n\nShort description\n\n\nHet betalen van een gehuurde auto gebeurt, zoals vaker benoemd, via een automatische afschrijving.\n\n\nWe hebben tijdens de eerste iteratie een gesteld dat het betalingssyteem actief 'vraagt' aan RedCars welke betalingen vericht moeten worden.\nTijdens de tweede iteratie hebben we de actor betalingssyteem veranderd naar van primair naar secundair. Daarbij hebben we tijd als primaire actor toegevoegd (zie \ntoelichting SRS\n)\n\n\nComponent Sequence Diagram\n\n\n\n\nPath to image : CSD_UC3_Betalen_iteratie_2\n\n\nDesign decisions\n\n\n Van tijd naar betalingsdienst\n\n\nDe abstracte actor Tijd triggert de betalingsdienst. De betalingsdienst vraagt aan het Reserveringsinfo component om de volledige betaling te berekenen.\n\n\n\n\nFacade Controller\n\n\nWij hebben voor de functionaliteit van het betalingscomponent een probleem opgelost door middel van een Design Pattern. Wij liepen er tegen aan dat het betalingscomponent, na het gebruik van de auto, het totaalbedrag moet weten. Om ervoor te zorgen dat we geen \nHogere Coupling\n en \nLagere Cohesie\n zouden krijgen door het betalingscomponent direct verbinding te laten leggen met de benodigde onderdelen om het totaal bedrag uit te rekenen.\n\n\nHierdoor hebben we een 'pure artificial' component bedacht, reserveringsinfo. Dit component is de brug tussen het betalingssysteem en de andere componenten (zie onderstaande afbeelding).\n\n\n\n\n\n\nUC 4 Klantcomponent\n\n\nShort description\n\n\nHet klant component wordt gebruikt om klanten mee te beheren.\n\n\nComponent Sequence Diagram Create\n\n\n\n\nPath to image : CSD_UC4_BeheerKlant_Create\n\n\nDesign decisions\n\n\nhappy flow\n\n\n\n\nToevoegen nieuwe klant aan systeem en controle op uniek account.\n\n\n\n\n\n\nComponent Sequence Diagram Read\n\n\n\n\nPath to image : CSD_UC4_BeheerKlant_Read\n\n\n\n\nComponent Sequence Diagram Update\n\n\n\n\nPath to image : CSD_UC4_BeheerKlant_Update\n\n\n\n\nComponent Sequence Diagram Delete\n\n\n\n\nPath to image : CSD_UC4_BeheerKlant_Delete\n\n\n\n\n\n\nUC 5 Autobeheercomponent\n\n\nShort description\n\n\nOnderstaande activity diagrams beschrijven de flow van het beheren van een auto.\n\n\nActivity Diagram Create\n\n\n\n\nAD_UC5_BeheerAuto_Create\n\n\nActivity Diagram Read\n\n\n\n\nAD_UC5_BeheerAuto_Read\n\n\nActivity Diagram Update\n\n\n\n\nAD_UC5_BeheerAuto_update\n\n\nActivity Diagram Delete\n\n\n\n\nAD_UC5_BeheerAuto_Delete\n\n\nDesign Class Diagram\n\n\n\n\nPath to image : Design Class Diagram_iteratie_2", 
+            "title": "SDD"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#software-design-description", 
+            "text": "", 
+            "title": "Software Design Description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#inhoudsopgave", 
+            "text": "Doel van dit document  Component Diagram  Overzicht van alle componenten    Detailed Design Description  UC 1 Reserveringscomponent  UC 2 Autocomponent  UC 3 Betalingscomponent  UC 4 Klantcomponent  UC 5 Autobeheercomponent    Design Class Diagram", 
+            "title": "Inhoudsopgave"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#introductie", 
+            "text": "De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te verstrekken, kunt u  naar de  Introductie Opdracht   gaan.", 
+            "title": "Introductie"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#doel-van-dit-document", 
+            "text": "Software Architectuur in grote lijnen beschrijven a.d.h.v. een componentdiagram.  Systeem operaties over de individuele componenten beschrijven a.d.h.v. Component Sequence Diagrams.  Een vertaling maken van concepten in het probleem(/opdracht)-domein naar code-concept a.d.h.v. een Design Class Diagram  'Gedrag' van het systeem beschrijven a.d.h.v. andere interactie-diagrams zoals Activity diagrams en een statemachine.  Gemaakte keuzes in het ontwerp beargumenteren en verantwoorden.", 
+            "title": "Doel van dit document"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-diagram", 
+            "text": "Iteratie 1   Path to image : Component_Diagram_v1-0-1  Iteratie 2   Path to image : Component_Diagram_v1-0-2", 
+            "title": "Component Diagram"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#overzicht-van-alle-componenten", 
+            "text": "* Provided Interface\n* * required Interface     Component  * Provided  ** Required  Component image with interfaces      auto  RitInfo      autobeheer  CheckInInfo  ritInfo,  reserveringsinfo     reservering  reserveringsinfo  CheckInInfo, klantInfo     webapp  webInfo      klant  klantInfo  webInfo, betalingsInfo     betalingsdienst  betalingsInfo", 
+            "title": "Overzicht van alle componenten"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#detailed-design-description", 
+            "text": "Hieronder worden de verschillende onderdelen verder uitgelegd.  Om de beschrijvingen structuur te geven hanteren  bespreken we de onderdelen in hoofdlijn over de Use Cases. Hierbij geldt dat het soms relevant kan zijn om uit te wijden over ook andere onderdelen. Hierdoor kan overlap ontstaan.  Detailed Design Descriptions Format\n\n* korte beschrijving van de koppeling tussen:\n  - De Use Case.\n  - Het ontworpen component.\n* Een component Sequence Diagram\n* Eventueel een Activity Diagram\n* Ontwerpbeslissingen met eventuele Design Patterns.  Overzicht keuze type diagram     UseCase-Code  SSD  CSD  AD  SM       UC-1  X  X       UC-2  X  X  X  X     UC-3  X  X       UC-4  (*CRUD)  X  X       UC-5   (*CRUD)    X       *CRUD = Create Read Update Delete", 
+            "title": "Detailed Design Description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#uc-1-reserveringscomponent", 
+            "text": "", 
+            "title": "UC 1 Reserveringscomponent"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#short-description", 
+            "text": "Het reserveren van een auto bestaat uit grofweg 3 hoofd-onderdelen:   Inloggen en verificatie van de klant.  Criteria aangeven voor het huren van een huurauto  Bevestigen van de reservering, praktische informatie verschaffen.", 
+            "title": "Short description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-iteratie-1", 
+            "text": "Path to image : CSD_UC1_reserverenAuto_iteratie1", 
+            "title": "Component Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-iteratie-2", 
+            "text": "Path to image : CSD_UC1_rserveerauto_iteratie2", 
+            "title": "Component Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#design-decisions", 
+            "text": "Inloggen en verificatie van de klant.   Criteria aangeven voor het huren van een huurauto   Bevestigen en praktische informatie", 
+            "title": "Design decisions"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#uc-2-autocomponent", 
+            "text": "", 
+            "title": "UC 2 Autocomponent"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#short-description_1", 
+            "text": "Het gebruiken van een auto bestaat 3 hoofd-onderdelen:    Openen van een auto a.d.h.v. verificatie op de reservering    Het maken van 1 of meer ritten tijdens de huurperiode    Het doorvoeren van de gemaakte ritten na de huurperiode.    Om de flow van  activiteiten extra te verduidelijken hebben we voor deze Use Case ook een activity diagram gemaakt.", 
+            "title": "Short description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#activity-diagram", 
+            "text": "Path to image : AD_Gebruik_Auto_iteratie_2", 
+            "title": "Activity Diagram"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-iteratie-1_1", 
+            "text": "Path to image : CSD_UC2-gebruikAuto_iteratie_1", 
+            "title": "Component Sequence Diagram Iteratie 1"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-iteratie-2_1", 
+            "text": "Path to image : CSD_UC2-gebruikAuto_iteratie_2", 
+            "title": "Component Sequence Diagram Iteratie 2"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#state-machine-diagram", 
+            "text": "", 
+            "title": "State Machine Diagram"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#design-decisions_1", 
+            "text": "Openen van een auto a.d.h.v. verificatie op de reservering   Het maken van 1 of meer ritten tijdens de huurperiode   Het doorvoeren van de gemaakte ritten na de huurperiode.   Toevoegen van een boete", 
+            "title": "Design decisions"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#uc-3-betalingscomponent", 
+            "text": "", 
+            "title": "UC 3 Betalingscomponent"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#short-description_2", 
+            "text": "Het betalen van een gehuurde auto gebeurt, zoals vaker benoemd, via een automatische afschrijving.  We hebben tijdens de eerste iteratie een gesteld dat het betalingssyteem actief 'vraagt' aan RedCars welke betalingen vericht moeten worden.\nTijdens de tweede iteratie hebben we de actor betalingssyteem veranderd naar van primair naar secundair. Daarbij hebben we tijd als primaire actor toegevoegd (zie  toelichting SRS )", 
+            "title": "Short description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram", 
+            "text": "Path to image : CSD_UC3_Betalen_iteratie_2", 
+            "title": "Component Sequence Diagram"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#design-decisions_2", 
+            "text": "Van tijd naar betalingsdienst  De abstracte actor Tijd triggert de betalingsdienst. De betalingsdienst vraagt aan het Reserveringsinfo component om de volledige betaling te berekenen.   Facade Controller  Wij hebben voor de functionaliteit van het betalingscomponent een probleem opgelost door middel van een Design Pattern. Wij liepen er tegen aan dat het betalingscomponent, na het gebruik van de auto, het totaalbedrag moet weten. Om ervoor te zorgen dat we geen  Hogere Coupling  en  Lagere Cohesie  zouden krijgen door het betalingscomponent direct verbinding te laten leggen met de benodigde onderdelen om het totaal bedrag uit te rekenen.  Hierdoor hebben we een 'pure artificial' component bedacht, reserveringsinfo. Dit component is de brug tussen het betalingssysteem en de andere componenten (zie onderstaande afbeelding).", 
+            "title": "Design decisions"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#uc-4-klantcomponent", 
+            "text": "", 
+            "title": "UC 4 Klantcomponent"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#short-description_3", 
+            "text": "Het klant component wordt gebruikt om klanten mee te beheren.", 
+            "title": "Short description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-create", 
+            "text": "Path to image : CSD_UC4_BeheerKlant_Create", 
+            "title": "Component Sequence Diagram Create"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#design-decisions_3", 
+            "text": "happy flow   Toevoegen nieuwe klant aan systeem en controle op uniek account.", 
+            "title": "Design decisions"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-read", 
+            "text": "Path to image : CSD_UC4_BeheerKlant_Read", 
+            "title": "Component Sequence Diagram Read"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-update", 
+            "text": "Path to image : CSD_UC4_BeheerKlant_Update", 
+            "title": "Component Sequence Diagram Update"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#component-sequence-diagram-delete", 
+            "text": "Path to image : CSD_UC4_BeheerKlant_Delete", 
+            "title": "Component Sequence Diagram Delete"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#uc-5-autobeheercomponent", 
+            "text": "", 
+            "title": "UC 5 Autobeheercomponent"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#short-description_4", 
+            "text": "Onderstaande activity diagrams beschrijven de flow van het beheren van een auto.", 
+            "title": "Short description"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#activity-diagram-create", 
+            "text": "AD_UC5_BeheerAuto_Create", 
+            "title": "Activity Diagram Create"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#activity-diagram-read", 
+            "text": "AD_UC5_BeheerAuto_Read", 
+            "title": "Activity Diagram Read"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#activity-diagram-update", 
+            "text": "AD_UC5_BeheerAuto_update", 
+            "title": "Activity Diagram Update"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#activity-diagram-delete", 
+            "text": "AD_UC5_BeheerAuto_Delete", 
+            "title": "Activity Diagram Delete"
+        }, 
+        {
+            "location": "/SDD_v1-0-1/#design-class-diagram", 
+            "text": "Path to image : Design Class Diagram_iteratie_2", 
+            "title": "Design Class Diagram"
+        }
+    ]
+}
