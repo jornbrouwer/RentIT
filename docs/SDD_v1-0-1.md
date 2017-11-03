@@ -93,7 +93,7 @@ Detailed Design Descriptions Format
 
 ```
 
-**Overzicht keuze type diagram**
+#### Overzicht keuze type diagram
 
 |  UseCase-Code  | SSD | CSD | AD  | SM  |     |
 |:--------------:|:---:|:---:|:---:|:---:| --- |

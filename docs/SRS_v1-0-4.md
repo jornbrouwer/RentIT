@@ -136,7 +136,7 @@ Use Case Descriptions Format
 * De brief-description.
 * Een afbeelding van het bijbehorende System Sequence Diagram.
 * De Fully-Dressed Use Case description.
-* Een link naar de glossary, met daarin beschreven systeemoperaties.
+* Een link naar de Software Design Description, met daarin beschreven systeemoperaties.
 * Een link naar de bijbehorende Component Sequence Diagram in het SDD.
 ```
 ---
@@ -145,22 +145,12 @@ Use Case Descriptions Format
 
 Wij hebben ervoor gekozen om de volgende 5 hoofd-functionaliteiten te vertalen naar Use Cases.
 
-```Opmerking; wij hebben in overleg met de docent alle __brief-descriptions__ alszijnde een specifiek scenario, met een happy ending geschreven.    ```
+```Opmerking; wij hebben in overleg met de docent alle __brief-descriptions__ alszijnde een specifiek scenario, met een happy ending geschreven.```
 
-```Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. WIj hebben ervoor gekozen 2 CRUD UseCases op een andere manier uit te voeren namelijk: UC4-beheerKlant en UC5-beheerAuto.
+```Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. WIj hebben ervoor gekozen 2 CRUD UseCases op een andere manier uit te voeren namelijk: UC4-beheerKlant en UC5-beheerAuto.```
 
-__UC4-beheerKlant__
 
-* 4x System Sequence Diagrams
-* 4x Component Sequence Diagram
-
-__UC5-beheerAuto__
-
-* 4x Activity diagram
-
-<!--
-	Beide manieren geven een trace over de 'te realiseren onderdelen'.
--->
+[Meer informatie over de uitgewerkte diagrammen in het SDD](SDD_v1-0-1.md#overzicht-keuze-type-diagram)
 
 ---
 
@@ -200,7 +190,7 @@ Het systeem stuurt een bevestiging.
 - Postcondities:
 	- De klant heeft een bevestiging ontvangen met daarin:
 	- de huurperiode( van-datum -- tot-datum).
-	- De kale prijs van de huurperiode (exlusief gereden kilometers en evt. boete).
+	- De kale prijs van dze huurperiode (exlusief gereden kilometers en evt. boete).
 	- Informatie over de gehuurde auto (bv het kenteken).
 	- De standplaats waar de klant de auto op kan halen.
 ```
@@ -807,11 +797,6 @@ Het systeem geeft aan dat de auto verwijderd is.
 
 | [naar boven](#top) |
 
-
----
-
-```!TIP!``` Description of all conceptual classes are in the Glossary
-[Glossary](Glossary_v1-0-1.md#description-of-domain-models-conceptual-classes)
 
 ---
 
