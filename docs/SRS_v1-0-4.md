@@ -12,8 +12,8 @@
 | v1.0.1  | 30/10/2017  |                                added basic template to file. (header )                                | JOB    |
 | v1.0.2  | 31 /10/2017 |                                       Customized Inhoudsopgave                                        | JOB    |
 | v1.0.3  | 31/10/2017  |                            Deleted obsolete information and cleaned markup                            | JOB    |
-| v1.04   | 01/11/2017  | Wrote descriptions for Actor-goal list and for the include and extend relations in the use case model | JOB    |
-|         |             |                                                                                                       |        |
+| v1.0.4   | 01/11/2017  | Wrote descriptions for Actor-goal list and for the include and extend relations in the use case model | JOB    |
+|        |             |                                                                                                       |        |
 
 -->
 
@@ -76,6 +76,12 @@ Voor dit probleem is ons gevraagd een analyse en ontwerp te realiseren.
 ---
 
 ### 2_1 UseCase Diagram
+
+In het Use Case diagram staan de mogelijke acties onderverdeeld in Use cases. Hierbij is aangegeven welke actoren welke acties op het systeem kunnen uitvoeren. Elke use case heeft waarde voor de opdrachtgever en levert een zichtbaar resultaat op.
+
+- Use case 1 tot en met 3 hebben betrekking op acties die klanten op het systeem doen.
+
+- Use Case 4 en 5 hebben betrekking op werknemers van RedCars. Use Case 4 en 5 zijn CRUD use cases. Dit staat voor Create, Read, Update en Delete. Zoals de naamgeving doet vermoeden hebben deze UseCases betrekking op het beheren van informatie.
 
 ![UC_diagram_v1-0-1](assets/UCD_v1-0-2.png)
 
@@ -147,10 +153,12 @@ Wij hebben ervoor gekozen om de volgende 5 hoofd-functionaliteiten te vertalen n
 
 ```Opmerking; wij hebben in overleg met de docent alle __brief-descriptions__ alszijnde een specifiek scenario, met een happy ending geschreven.```
 
-```Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. WIj hebben ervoor gekozen 2 CRUD UseCases op een andere manier uit te voeren namelijk: UC4-beheerKlant en UC5-beheerAuto.```
+Ons is gevraagd om minimaal 1 CRUD Use Case uit te werken in onze analyse en design. Wij hebben ervoor gekozen 2 CRUD UseCases uit te werken en deze op twee verschillende manieren te modeleren. Dit hebben wij gedaan omdat wij het interessant vonden om andere modellen te gebruiken voor eenzelfde probleemstelling.
 
 
 [Meer informatie over de uitgewerkte diagrammen in het SDD](SDD_v1-0-1.md#overzicht-keuze-type-diagram)
+
+---
 
 ---
 
@@ -175,6 +183,14 @@ Het systeem stuurt een bevestiging.
 ![SSD_UC1_reserveerAuto_v1-0-0](assets/SSD_UC1_reserveerAuto_v1-0-1.png)
 
 [Path to image : SSD_UC1_reserveerAuto_v1-0-0](assets/SSD_UC1_reserveerAuto_v1-0-1.png)
+
+##### Systeemoperaties
+
+Het SSD heeft twee 'calls' op het systeem, die belangrijk zijn om de Use Case uit te voeren:
+
+1. login (email, password) <br>
+	a. Het emailadres en wachtwoord zijn pas beschikbaar nadat de klant succesvol is aangemeld. Het wachtwoord is namelijk het nummer van de pas, die opgestuurd is als de klant volledig is aangemeld.
+2. makeReservation(rentalPeriod, car)
 
 ##### Fully-dressed Description
 
@@ -222,6 +238,14 @@ Het systeem stuurt een bevestiging.
 - 9.a. [Er zijn geen autos van dit type beschikbaar] Systeem toont melding en evt. om auto van ander type te huren.
 ```
 
+---
+
+---
+
+| [naar boven](#top) |
+
+---
+
 ### 3_2 UC2: gebruik auto
 
 
@@ -239,13 +263,24 @@ in dat geval wordt dit geregistreerd en geeft de mogelijkheid aan de klant om ui
 De klant checkt uit.
 De klant is wedergekeerd op de standplaats en doet de auto op slot met zijn pasje.
 
-
 ##### System Sequence Diagram
-
-![SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
 
 [Path to image : SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
 
+##### Systeemoperaties
+
+Deze SSD heeft 4 belangrijke 'calls' op het systeem:
+
+1. checkin(cardnr) <br>
+	a. de klant moet inchecken met zijn kaart om de auto te kunnen (en mogen) gebruiken.  <br>
+	b. het systeem moet dan kijken of de klant gemachtigd is om de auto te openen <br>
+2. startCar() <br>
+	a. de tweede en derde 'calls' staan in een loop. De reden hiervoor is dat de auto gebruikt kan worden door de klant, zolang deze niet weer op de standplaats gezet wordt.  <br>
+3. stopCar() <br>
+	a. Na het stoppen van de auto wordt gecheckt door het systeem of de auto op de standplaats staat.  <br>
+4. checkout(cardnr)
+
+![SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
 
 ##### Fully-dressed Description
 
@@ -288,8 +323,6 @@ Ga verder bij stap 4
 * 14.b. Het systeem stuurt alle informatie op voor verwerking inclusief de melding dat de auto te lang gebruikt is.
 ```
 
-- [ ] Link to Component Sequence Diagram
-
 ---
 
 ---
@@ -331,6 +364,10 @@ Op het moment dat er een reservering wordt geplaatst, staat er een eindtijd in h
 
 [Path to image : SSD_UC3-betalen](newDiagrams/SSD_UC3_Betalen.png)
 
+##### Systeemoperaties
+
+1. nextInvoice = getNextInvoice() <br>
+	a. Er zit een kleine, maar belangrijke, nuance tussen de twee SSD's. Namelijk de actor die de Use Case initieert. In de eerste iteratie hebben we gesteld dat de (externe-)betalingsdienst, actief zou vragen aan het systeem of er rekeningen zouden zijn die betaald moesten worden. Dit leek ons al geen ideale oplossingen, maar we wisten op dat moment geen betere oplossing. In de tweede iteratie hebben we een abstracte actor toegevoegd: 'tijd'. Dit is volgens ons de meest logische oplossing. De transitie na het gebruik van een auto naar het betalen, gebeurd namelijk alleen maar over tijd. Na een x aantal dagen, na het aflopen van een reservering, wordt er een __automatische__ afschrijving gedaan op de rekening. Vandaar dat tijd 'diegene' is die ervoor zorgt dat er de rekening bij de betalingsdienst terecht komt. 
 
 ##### Fully-dressed Description
 
@@ -371,10 +408,6 @@ Op het moment dat er een reservering wordt geplaatst, staat er een eindtijd in h
 * 2.b. Het betalingsinterface rekent het huurbedrag als boete.
 use case gaat verder bij stap 2.
 ```
-
-##### Systeemoperaties
-
-[ ] link to Component sequence diagram
 
 ---
 
