@@ -1,7 +1,7 @@
 #include "PaidSubscription.h"
 
 PaidSubscription::PaidSubscription(const std::string& aCarType, const std::string& aSubType)
-:Subscription(400, 4000, 6000, 14000, aCarType, "Paid", aSubType), kmFree(100)
+:Subscription(400, 4000, 6000, 14000, 25, aCarType, "Paid", aSubType), kmFree(100)
 {
 }
 
@@ -14,8 +14,8 @@ std::string PaidSubscription::getSub() const
 std::string PaidSubscription::str()
 {
     std::string freeSubInfo = "Chosen subscription and its prices (in cents) are:\r\n";
-    freeSubInfo += "Car type:\t" + Subscription::carType + "\r\n";
     freeSubInfo += "Subscription type:\t" + Subscription::type + "(" + Subscription::subType + ")\r\n";
+    freeSubInfo += "Car type:\t" + Subscription::carType + "\r\n";
     freeSubInfo += "Subscription price:\t";
     if (Subscription::subType == "perHour")
     {

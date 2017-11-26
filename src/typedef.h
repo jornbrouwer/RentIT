@@ -1,1 +1,1 @@
-typedef unsigned long eurocents;
+typedef long eurocents;

@@ -1,7 +1,7 @@
 #include "Customer.h"
 #include <random>
 
-Customer::Customer(const std::string& aName, const Subscription& aSubscription, unsigned long aNMoney)
+Customer::Customer(const std::string& aName, const Subscription& aSubscription, eurocents aNMoney)
 :name(aName), subscription(aSubscription), nMoney(aNMoney), cardNr(0)
 {
     generateCardNr();
@@ -19,10 +19,36 @@ std::string Customer::str()
 {
     std::string customerInfo = "Customer information:\r\n";
     customerInfo += "Name:\t" + name + "\r\n";
-    customerInfo += "Subscription:\t"+subscription.getSub()+ "\r\n";
+    customerInfo += subscription.str() + "\r\n";
     return customerInfo;    
 }
 
+unsigned long Customer::getCardNr() const
+{
+    return cardNr;
+}
+
+std::string Customer::getName() const
+{
+    return name;
+}
+
+Subscription Customer::getSubscription() const
+{
+    return subscription;
+}
+bool Customer::makePayment(eurocents price)
+{
+    nMoney -= price;
+    if (nMoney)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 Customer::~Customer()
 {
 }

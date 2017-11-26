@@ -1,7 +1,7 @@
-Customer.o: Customer.cpp Customer.h Subscription.h typedef.h
+Customer.o: Customer.cpp Customer.h typedef.h Subscription.h
 
 Customer.h:
 
-Subscription.h:
-
 typedef.h:
+
+Subscription.h:

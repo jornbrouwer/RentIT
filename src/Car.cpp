@@ -1,19 +1,23 @@
 #include "Car.h"
 
-Car::Car(unsigned long aDrivenKm, const std::string& anEndTime)
-:drivenKm(aDrivenKm), endTime(anEndTime)
+Car::Car(unsigned long aDrivenKm, unsigned long someHoursTooLate)
+:drivenKm(aDrivenKm), hoursTooLate(someHoursTooLate)
 {
+}
 
+Car::Car(const Car& rhs)
+:drivenKm(rhs.drivenKm), hoursTooLate(rhs.hoursTooLate)
+{
 }
 
 Car::~Car(){}
 
-std::string Car::getEndTime()
+unsigned long Car::getHoursTooLate() const
 {
-    return endTime;
+    return hoursTooLate;
 }
 
-unsigned long Car::getDrivenKm()
+unsigned long Car::getDrivenKm() const
 {
     return drivenKm;
 }
