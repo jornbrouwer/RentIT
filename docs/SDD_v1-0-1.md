@@ -23,7 +23,8 @@
 
 ## Introductie
 
-De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te verstrekken, kunt u [naar de ```Introductie Opdracht```](SRS_v1-0-4.md#introductie-opdracht)  gaan.
+De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te verstrekken, kunt u [naar de ```Introductie Opdracht```](SRS_v1-0-4/#1-introductie-opdracht)  gaan.
+
 
 ---
 
@@ -42,10 +43,19 @@ De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te 
 
 **Iteratie 1**
 
+Tijdens de lessen van OSM-M hebben wij gezamenlijk een eerste versie van een component diagram opgesteld. Nadat wij deze met z'n tweeen besproken hadden, vonden het niet noodzakelijk hier tijdens de eerste iteratie nog wijzigingen in aan te brengen.
+
 ![Component_Diagram_v1-0-1](assets/Component_Diagram_v1-0-0.png)
 [Path to image : Component_Diagram_v1-0-1](assets/Component_Diagram_v1-0-0.png)
 
 **Iteratie 2**
+
+Tijdens de tweede iteratie hebben wij noodzakelijkerwijs een aantal wijzigingen doorgevoerd.
+
+1. Een nieuwe interface: CheckInInfo vanuit autobeheer aangeboden naar reservering.
+2. De required/provided interface omgedraaid vanuit auto naar autobeheer.
+3. Een nieuw component: Webapp met een provided interface richting klant-component.
+4. De naam betaalservice veranderd in betalingsdienst.
 
 ![Component_Diagram_v1-0-2](newDiagrams/png/CD_RendIt.png)
 
@@ -54,6 +64,8 @@ De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te 
 ---
 
 #### Overzicht van alle componenten
+
+Onderstaande tabel biedt een overzicht van de provided en required interfaces per component.
 
 ```
 * Provided Interface
@@ -75,10 +87,7 @@ De opdracht staat (kort) beschreven in het SRS. Om geen duplicate informatie te 
 
 ### Detailed Design Description
 
-
-Hieronder worden de verschillende onderdelen verder uitgelegd.
-
-Om de beschrijvingen structuur te geven hanteren  bespreken we de onderdelen in hoofdlijn over de Use Cases. Hierbij geldt dat het soms relevant kan zijn om uit te wijden over ook andere onderdelen. Hierdoor kan overlap ontstaan.
+Hieronder zijn de gedetaileerde beschrijvingen van ontwerpen van het systeem. Om de beschrijvingen structuur te geven, bespreken we de onderdelen in hoofdlijn over de Use Cases. Hierbij geldt dat het soms relevant kan zijn om uit te wijden over andere onderdelen, hierdoor ontstaat overlap tussen de use cases.
 
 
 ```
@@ -95,13 +104,13 @@ Detailed Design Descriptions Format
 
 #### Overzicht keuze type diagram
 
-|  UseCase-Code  | SSD | CSD | AD  | SM  |     |
-|:--------------:|:---:|:---:|:---:|:---:| --- |
-|      UC-1      |  X  |  X  |     |     |     |
-|      UC-2      |  X  |  X  |  X  |  X  |     |
-|      UC-3      |  X  |  X  |     |     |     |
-| UC-4  (*CRUD)  |  X  |  X  |     |     |     |
-| UC-5   (*CRUD) |     |     |  X  |     |     |
+|  UseCase-Code  | SSD | CSD | AD  | SM  |
+|:--------------:|:---:|:---:|:---:|:---:|
+|      UC-1      |  X  |  X  |     |     |
+|      UC-2      |  X  |  X  |  X  |  X  |
+|      UC-3      |  X  |  X  |     |     |
+| UC-4  (*CRUD)  |  X  |  X  |     |     |
+| UC-5   (*CRUD) |     |     |  X  |     |
 
 *CRUD = Create Read Update Delete
 
@@ -113,7 +122,7 @@ Detailed Design Descriptions Format
 
 ##### Short description
 
-Het reserveren van een auto bestaat uit grofweg 3 hoofd-onderdelen:
+Het reserveren van een auto bestaat uit grofweg 3 (hoofd-)onderdelen:
 
 1. Inloggen en verificatie van de klant.
 2. Criteria aangeven voor het huren van een huurauto
@@ -318,7 +327,6 @@ Onderstaande activity diagrams beschrijven de flow van het beheren van een auto.
 ![AD_UC5_BeheerAuto_Delete](newDiagrams/png/AD_UC5_BeheerAuto_Delete.png)
 
 [AD_UC5_BeheerAuto_Delete](newDiagrams/png/AD_UC5_BeheerAuto_Delete.png)
-
 
 
 ### Design Class Diagram
