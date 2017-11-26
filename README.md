@@ -26,7 +26,7 @@ De reden dat wij dit besloten hebben is dat mijn partner en ik op verschillende 
 
 Na het uitzoeken van e.e.a. over markdown kwamen we de tool mkdocs tegen. Je kunt hiermee via de command line, binnen 2 commando's een real-time webservertje draaien. In je tekstverwerker maak je bv. wijzigingen in je Markdown files (.md) >> save-file. Hierna ververst de browser automatisch en krijg je de wijzigingen te zien.
 
-Het enige wat je nodig hebt is python:
+NOTE:Om mkdocs te kunnen installeren heb  je python nodig.
 
 
 ### Clone this repo
@@ -60,3 +60,4 @@ mkdocs serve
 ![](assets/markdown-img-paste-20171102231815929.png)
 
 open: [localhost:8000](127.0.0.1:8000)
+open: [127.0.0.1:8000](127.0.0.1:8000)
