@@ -8,7 +8,12 @@ Car::Car(unsigned long aDrivenKm, const std::string& anEndTime)
 
 Car::~Car(){}
 
-std::string getEndTime()
+std::string Car::getEndTime()
 {
     return endTime;
+}
+
+unsigned long Car::getDrivenKm()
+{
+    return drivenKm;
 }

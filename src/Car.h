@@ -9,6 +9,7 @@ public:
     Car(unsigned long aDrivenKm, const std::string& anEndTime);
     virtual ~Car();
     virtual std::string getEndTime();
+    virtual unsigned long getDrivenKm();
 protected:
     unsigned long drivenKm;
     std::string endTime;

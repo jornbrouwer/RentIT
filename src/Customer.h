@@ -10,6 +10,7 @@ public:
     Customer(const std::string& aName, const Subscription& aSubscription, unsigned long nMoney=1000);
     virtual ~Customer();
     void generateCardNr();
+    std::string str();
 
 private:
     std::string name;

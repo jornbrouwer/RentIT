@@ -1,9 +1,9 @@
-#ifndef PAYMENTINTERFACE_H_
-#define PAYMENTINTERFACE_H_
+// #ifndef PAYMENTINTERFACE_H_
+// #define PAYMENTINTERFACE_H_
 
-class PaymentInterface
-{
+// class PaymentInterface
+// {
 
-};
+// };
 
-#endif /*RESERVATION_H_*/
+// #endif /*RESERVATION_H_*/

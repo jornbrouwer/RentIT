@@ -11,7 +11,7 @@ Reservation::~Reservation()
 
 }
 
-std::string Reservation::getEndTime()
+std::string Reservation::getEndTime() const
 {
     return endTime;
 }

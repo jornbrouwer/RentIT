@@ -10,7 +10,7 @@ class Reservation
 public:
     Reservation(const Customer& aCustomer, const std::string& aBeginTime, const std::string& anEndTime, const Car& aCar);
     ~Reservation();
-    std::string getEndTime();
+    std::string getEndTime() const;
     Car getCar();
 private:
     Customer customer;

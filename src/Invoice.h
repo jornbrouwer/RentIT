@@ -1,21 +1,21 @@
-#ifndef INVOICE_H_
-#define INVOICE_H_
+// #ifndef INVOICE_H_
+// #define INVOICE_H_
 
-#include "typedef.h"
-#include "Reservation.h"
+// #include "typedef.h"
+// #include "Reservation.h"
 
-class Invoice
-{
-public:
-    Invoice(const Reservation& aReservation);
-    void getFine()
-    eurocents getTotalPrice();
-    ~Invoice();
+// class Invoice
+// {
+// public:
+//     Invoice(const Reservation& aReservation);
+//     void getFine();
+//     eurocents getTotalPrice();
+//     ~Invoice();
     
-private:
-    Reservation reservation;
-    eurocents fine;
-    eurocents totalPrice;
-};
+// private:
+//     Reservation reservation;
+//     eurocents fine;
+//     eurocents totalPrice;
+// };
 
-#endif /*INVOICE_H_*/
+// #endif /*INVOICE_H_*/
