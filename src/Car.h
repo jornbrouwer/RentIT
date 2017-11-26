@@ -6,12 +6,14 @@
 class Car
 {
 public:
-    Car(unsigned long aDrivenKm, const std::string& anEndTime);
+    Car(unsigned long aDrivenKm, unsigned long someHoursTooLate);
+    Car(const Car& rhs);
     virtual ~Car();
-    virtual std::string getEndTime();
+    virtual unsigned long getDrivenKm() const;
+    virtual unsigned long getHoursTooLate() const;
 protected:
     unsigned long drivenKm;
-    std::string endTime;
+    unsigned long hoursTooLate;
 };
 
 #endif /*CAR_H_*/

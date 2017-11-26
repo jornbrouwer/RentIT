@@ -9,6 +9,7 @@ class PaidSubscription: public Subscription
 public:
     PaidSubscription(const std::string& aCarType = "passenger_car", const std::string& aSubType = "perHour");
     virtual ~PaidSubscription();
+    std::string getSub() const;
     std::string str();
 private:
     std::string carType;

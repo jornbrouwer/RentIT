@@ -1,21 +1,19 @@
 #ifndef INVOICE_H_
 #define INVOICE_H_
 
-#include "typedef.h"
 #include "Reservation.h"
+#include "Customer.h"
+#include "Car.h"
+#include "Subscription.h"
 
-class Invoice
+struct Invoice
 {
-public:
-    Invoice(const Reservation& aReservation);
-    void getFine()
-    eurocents getTotalPrice();
-    ~Invoice();
-    
-private:
-    Reservation reservation;
-    eurocents fine;
-    eurocents totalPrice;
+    Reservation r;
+    Customer c;
+    Car a;
+    unsigned long hoursTooLate;
+    unsigned long drivenKm;
+    Subscription sub;
 };
 
-#endif /*INVOICE_H_*/
+#endif //INVOICE_H_

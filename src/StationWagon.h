@@ -6,8 +6,9 @@
 class StationWagon: public Car
 {
 public:
-    StationWagon(unsigned long aDrivenKm, const std::string& anEndTime);
+    StationWagon(unsigned long aDrivenKm, unsigned long someHoursTooLate);
     ~StationWagon();
+    std::string str();
 private:
 
 };
