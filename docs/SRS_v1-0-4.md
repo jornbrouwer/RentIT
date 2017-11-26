@@ -265,6 +265,8 @@ De klant is wedergekeerd op de standplaats en doet de auto op slot met zijn pasj
 
 ##### System Sequence Diagram
 
+![SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
+
 [Path to image : SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
 
 ##### Systeemoperaties
@@ -279,8 +281,6 @@ Deze SSD heeft 4 belangrijke 'calls' op het systeem:
 3. stopCar() <br>
 	a. Na het stoppen van de auto wordt gecheckt door het systeem of de auto op de standplaats staat.  <br>
 4. checkout(cardnr)
-
-![SSD_UC2-gebruikAuto](assets/SSD_UC2_gebruikAuto_v1-0-2.png)
 
 ##### Fully-dressed Description
 
@@ -367,7 +367,7 @@ Op het moment dat er een reservering wordt geplaatst, staat er een eindtijd in h
 ##### Systeemoperaties
 
 1. nextInvoice = getNextInvoice() <br>
-	a. Er zit een kleine, maar belangrijke, nuance tussen de twee SSD's. Namelijk de actor die de Use Case initieert. In de eerste iteratie hebben we gesteld dat de (externe-)betalingsdienst, actief zou vragen aan het systeem of er rekeningen zouden zijn die betaald moesten worden. Dit leek ons al geen ideale oplossingen, maar we wisten op dat moment geen betere oplossing. In de tweede iteratie hebben we een abstracte actor toegevoegd: 'tijd'. Dit is volgens ons de meest logische oplossing. De transitie na het gebruik van een auto naar het betalen, gebeurd namelijk alleen maar over tijd. Na een x aantal dagen, na het aflopen van een reservering, wordt er een __automatische__ afschrijving gedaan op de rekening. Vandaar dat tijd 'diegene' is die ervoor zorgt dat er de rekening bij de betalingsdienst terecht komt. 
+	a. Er zit een kleine, maar belangrijke, nuance tussen de twee SSD's. Namelijk de actor die de Use Case initieert. In de eerste iteratie hebben we gesteld dat de (externe-)betalingsdienst, actief zou vragen aan het systeem of er rekeningen zouden zijn die betaald moesten worden. Dit leek ons al geen ideale oplossingen, maar we wisten op dat moment geen betere oplossing. In de tweede iteratie hebben we een abstracte actor toegevoegd: 'tijd'. Dit is volgens ons de meest logische oplossing. De transitie na het gebruik van een auto naar het betalen, gebeurd namelijk alleen maar over tijd. Na een x aantal dagen, na het aflopen van een reservering, wordt er een __automatische__ afschrijving gedaan op de rekening. Vandaar dat tijd 'diegene' is die ervoor zorgt dat er de rekening bij de betalingsdienst terecht komt.
 
 ##### Fully-dressed Description
 
